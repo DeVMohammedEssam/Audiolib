@@ -1,10 +1,14 @@
 .custom-btn {
     border-width: 0.1rem;
-    border-style: solid;
-    border-radius: 1.5rem;
+    border: none;
     padding: 0.4rem;
-    color: $darkGrey;
     text-align: center;
+    background-color: transparent;
+
+    &:active,
+    &:focus {
+        outline: none;
+    }
 
     &:hover {
         text-decoration: none;

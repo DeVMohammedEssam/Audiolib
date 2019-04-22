@@ -1,79 +1,84 @@
 .home {
-    height: $pagesVh;
-    position: relative;
-    color: $white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: $navbarPadding*2;
-    border-radius: $homeBorderRadius $homeBorderRadius 0 0;
-    overflow: hidden;
 
-
+    /* cover start */
     &__cover {
-        background-image: linear-gradient(45deg, $overlay--blue, darken($overlay--blue, 10%)), url("/images/home-cover.png");
-        background-position: top;
-        height: 100%;
-        width: 100%;
-        z-index: -1;
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
-
-
-
-    &__heart-logo-subtitle {
-        font-size: $midFont;
-        margin-left: $margin-sm;
-
-    }
-
-
-    &__right-widget-container {
-        position: fixed;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        margin: auto;
-        background: $white;
-        width: 5rem;
-        height: 25rem;
-        padding: 1rem 3rem;
-        border-radius: $homeWidgetBorderRadius 0 0 $homeWidgetBorderRadius;
+        background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3)), url("/images/covers/home-cover.png");
+        background-size: cover;
+        background-position: center;
+        height: $homeCoverHeight;
         display: flex;
-        justify-content: space-around;
-        align-items: center;
         flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        color: $white;
 
-    }
-
-    &__checknow-logo-container {
-        margin-bottom: -$homeLogoMargin;
-        margin-top: $homeLogoMargin;
-        min-width: 15rem;
-        min-height: 15rem;
-        flex-basis: 20rem;
-        padding: $checknowPadding;
-        border-radius: 50%;
-        background: $blue;
-        position: relative;
-
-        span {
-            position: absolute;
-            bottom: 1.5rem;
-            left: 23%;
-            font-weight: 700;
+        &__content {
+            padding: 0 15%;
         }
 
+        &__title {
+            align-self: flex-start;
+        }
+
+        &__note {
+            color: $midGrey;
+            margin: auto;
+            margin-top: 10rem;
+            margin-bottom: -10rem;
+            max-width: 50rem;
+        }
     }
 
-    &__checknow-logo {
-        position: absolute;
-        top: 0;
-        bottom: 3rem;
-        margin: auto;
-        left: 27%;
+    /* cover end */
+
+    /* home content  start*/
+    &__google-input-container {
+        position: relative;
+
+        button {
+            position: absolute;
+            background-color: $white;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            left: 1px;
+            height: 5rem;
+            width: 5rem;
+            transition: 0.3s ease, border 0s;
+
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+        }
+
+        button:focus,
+        button:active {
+            color: $danger;
+            background: $white;
+            border: 1px solid $midGrey;
+            transition: 0.3s ease, border 0s;
+
+            i {
+                font-size: 2rem;
+                transition: 0.3s ease;
+            }
+        }
     }
+
+    &__google-input {
+        width: 100%;
+        padding: 1rem;
+        border-radius: 10rem 3rem 3rem 10rem;
+    }
+
+
+
+    &__cards-container {
+        margin-top: $sectionsMargin;
+    }
+
+    /* home content end */
+
 }

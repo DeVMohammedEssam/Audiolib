@@ -1,33 +1,84 @@
 import React, { Component } from 'react';
 import Navbar from "./layout/Navbar";
+import BookCard from './layout/BookCard';
+import Footer from './layout/Footer';
 class Home extends Component {
     state = {}
     render() {
         return (
             <React.Fragment>
                 <Navbar />
-                <div className="home">
-                    <div className="home__cover"></div>
-                    <p className="home__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium corporis doloribus voluptatem nemo, asperiores itaque culpa laudantium tempore obcaecati architecto.</p>
-                    <div className="home__heart-logo-container">
-                        <img src="images/heart-icon.png " className="home__heart-logo " alt="" />
-                        <span className="home__heart-logo-subtitle ">Our mission</span>
+                <main className="home">
+                    <section className="home__cover ">
+                        <div className="home__cover__content" >
+                            <div className="home__cover__logo"></div>
+                            <h1 className="home__cover__title">المكتبه الصوتيه</h1>
+                            <p className="home__cover__text">هي المدلول الاوسع غالبا ما تتجاوز الكتب المطبوعه بمعناها الضيق فتضم الان معها عددا كبيرا أو قليلا من المواد الورقيه الاخرى كالجرائد والنثرات وبقية الدوريات على اختلاف انواعها وكذلك الخرائط والاطالس والرسمات الهندسيه ، كما انها قد تضم ايضا المخطوطات التراثيه القديمه والمراسلات والمذكرات الحديثه وغيرها من المواد الورقيه غير المطبوعه المكتبه هي تجميع لمصادر وخلافه </p>
+                            <p className="home__cover__note">ملاحظه: يمكنك البحث بالصوت او الكتابه ويفضل البحث بالانجليزيه اذا كنت تستخدم الصوت</p>
+                        </div>
+                    </section>
 
-                    </div>
-                    <p className="home__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad voluptate accusantium ratione iure quaerat voluptates, harum porro magni earum illum distinctio, voluptatibus nostrum iusto. Impedit praesentium voluptatum amet ex explicabo commodi ea omnis maxime sed. Iusto ducimus dolor odio magnam doloribus architecto illo ea! Nulla aliquid ab accusamus non ipsa?</p>
-                    <div className="home__right-widget-container">
-                        <img className="home__right-widget-icon" src="/images/right-widget-1.png" alt="" />
-                        <img className="home__right-widget-icon" src="/images/arrow.png" alt="" />
-                        <img className="home__right-widget-icon" src="/images/right-widget-2.png" alt="" />
-                        <img className="home__right-widget-icon" src="/images/arrow.png" alt="" />
-                        <img className="home__right-widget-icon" src="/images/right-widget-3.png" alt="" />
-                    </div>
-                    <div className="home__checknow-logo-container">
-                        <img className="home__checknow-logo" src="/images/contract.png" alt="" />
-                        <span>Check Now</span>
-                    </div>
+                    <div className="custom-container mt-5">
+                        <div className="row">
+                            <div className="col-12">
+                                <div className="home__google-input-container">
+                                    <input type="text" className="home__google-input custom-input" placeholder="ابحث عن..." />
+                                    <button type="button" className="custom-btn"><i className="fas fa-microphone"></i></button>
+                                </div>
+                            </div>
+                        </div>
 
-                </div>
+                        {/* book cards start */}
+                        <section className="home__cards-container">
+                            <div className="row">
+                                <div className="col-12 col-sm-6 col-md-6 col-xl-3">
+                                    <BookCard url="http://placehold.it/100/100" name="احمد كمال" desc={"يتحدث هذا الكتاب عن العصور اهم احداث العصور الوسطى خصيصا الفتره منذ عام"} />
+                                </div>
+                                <div className="col-12 col-sm-6 col-md-6 col-xl-3">
+                                    <BookCard url="http://placehold.it/100/100" name="احمد كمال" desc={"يتحدث هذا الكتاب عن العصور اهم احداث العصور الوسطى خصيصا الفتره منذ عام"} />
+                                </div>
+                                <div className="col-12 col-sm-6 col-md-6 col-xl-3">
+                                    <BookCard url="http://placehold.it/100/100" name="احمد كمال" desc={"يتحدث هذا الكتاب عن العصور اهم احداث العصور الوسطى خصيصا الفتره منذ عام"} />
+                                </div>
+                                <div className="col-12 col-sm-6 col-md-6 col-xl-3">
+                                    <BookCard url="http://placehold.it/100/100" name="احمد كمال" desc={"يتحدث هذا الكتاب عن العصور اهم احداث العصور الوسطى خصيصا الفتره منذ عام"} />
+                                </div>
+                                <div className="col-12 col-sm-6 col-md-6 col-xl-3">
+                                    <BookCard url="http://placehold.it/100/100" name="احمد كمال" desc={"يتحدث هذا الكتاب عن العصور اهم احداث العصور الوسطى خصيصا الفتره منذ عام"} />
+                                </div>
+                                <div className="col-12 col-sm-6 col-md-6 col-xl-3">
+                                    <BookCard url="http://placehold.it/100/100" name="احمد كمال" desc={"يتحدث هذا الكتاب عن العصور اهم احداث العصور الوسطى خصيصا الفتره منذ عام"} />
+                                </div>
+                                <div className="col-12 col-sm-6 col-md-6 col-xl-3">
+                                    <BookCard url="http://placehold.it/100/100" name="احمد كمال" desc={"يتحدث هذا الكتاب عن العصور اهم احداث العصور الوسطى خصيصا الفتره منذ عام"} />
+                                </div>
+                                <div className="col-12 col-sm-6 col-md-6 col-xl-3">
+                                    <BookCard url="http://placehold.it/100/100" name="احمد كمال" desc={"يتحدث هذا الكتاب عن العصور اهم احداث العصور الوسطى خصيصا الفتره منذ عام"} />
+                                </div>
+                                <div className="col-12 col-sm-6 col-md-6 col-xl-3">
+                                    <BookCard url="http://placehold.it/100/100" name="احمد كمال" desc={"يتحدث هذا الكتاب عن العصور اهم احداث العصور الوسطى خصيصا الفتره منذ عام"} />
+                                </div>
+                                <div className="col-12 col-sm-6 col-md-6 col-xl-3">
+                                    <BookCard url="http://placehold.it/100/100" name="احمد كمال" desc={"يتحدث هذا الكتاب عن العصور اهم احداث العصور الوسطى خصيصا الفتره منذ عام"} />
+                                </div>
+                                <div className="col-12 col-sm-6 col-md-6 col-xl-3">
+                                    <BookCard url="http://placehold.it/100/100" name="احمد كمال" desc={"يتحدث هذا الكتاب عن العصور اهم احداث العصور الوسطى خصيصا الفتره منذ عام"} />
+                                </div>
+                                <div className="col-12 col-sm-6 col-md-6 col-xl-3">
+                                    <BookCard url="http://placehold.it/100/100" name="احمد كمال" desc={"يتحدث هذا الكتاب عن العصور اهم احداث العصور الوسطى خصيصا الفتره منذ عام"} />
+                                </div>
+                                <div className="col-12 col-sm-6 col-md-6 col-xl-3">
+                                    <BookCard url="http://placehold.it/100/100" name="احمد كمال" desc={"يتحدث هذا الكتاب عن العصور اهم احداث العصور الوسطى خصيصا الفتره منذ عام"} />
+                                </div>
+                                <div className="col-12 col-sm-6 col-md-6 col-xl-3">
+                                    <BookCard url="http://placehold.it/100/100" name="احمد كمال" desc={"يتحدث هذا الكتاب عن العصور اهم احداث العصور الوسطى خصيصا الفتره منذ عام"} />
+                                </div>
+                            </div>
+                            {/* book cards end */}
+                        </section>
+                    </div>
+                </main>
+                <Footer />
             </React.Fragment>
         );
     }

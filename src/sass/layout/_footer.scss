@@ -1,0 +1,59 @@
+.footer {
+    background-color: $footerBgColor;
+    color: $darkGrey;
+    padding: 2rem;
+
+
+    .has-border-lg {
+        position: relative;
+        border-left: 0.1rem solid lighten($footerBgColor, 7%);
+    }
+
+    &__social {
+        align-self: flex-start;
+
+        &__links {
+            margin: 2rem 0;
+
+            img {
+                width: 25px;
+                height: 25px;
+                margin-left: 2rem;
+                opacity: 0.8;
+
+                &:hover {
+                    opacity: 1;
+                }
+
+            }
+
+        }
+
+        &__phone {}
+    }
+
+    &__title {
+        color: $midGrey;
+    }
+
+    &__text {}
+
+    &__helping-links {
+        a {
+            color: $midGrey;
+            display: block;
+
+            &:hover {
+                color: $darkGrey;
+
+            }
+        }
+
+    }
+
+    &__v-line {
+        width: 0.2rem;
+        height: 10rem;
+        background-color: $darkGrey;
+    }
+}

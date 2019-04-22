@@ -6,6 +6,7 @@
 @import "./base/animations";
 /* components */
 @import "./components/flashMessages";
+@import "./components/placeholders";
 /* layout */
 @import "./layout/navbar";
 @import "./layout/buttons";
@@ -13,13 +14,9 @@
 @import "./layout/loaders";
 @import "./layout/cards";
 @import "./layout/forms";
+@import "./layout/footer";
 /* pages */
 @import "./pages/home";
-@import "./pages/analyze";
-@import "./pages/history";
-@import "./pages/notifications";
-@import "./pages/analysis";
-@import "./pages/broadcast";
 @import "./pages/pageNotFound";
 
 /* vendors */
