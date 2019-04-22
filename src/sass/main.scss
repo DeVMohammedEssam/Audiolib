@@ -9,6 +9,8 @@
 @import "./components/placeholders";
 /* layout */
 @import "./layout/navbar";
+@import "./layout/dashnavbar";
+
 @import "./layout/buttons";
 @import "./layout/inputs";
 @import "./layout/loaders";
@@ -18,6 +20,8 @@
 /* pages */
 @import "./pages/home";
 @import "./pages/pageNotFound";
+@import "./pages/login";
+@import "./pages/bookForm";
 
 /* vendors */
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";

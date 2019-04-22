@@ -2,26 +2,29 @@
 .custom-navbar {
     display: flex;
     align-items: center;
-    height: $navVh;
-    min-height: 5rem;
+    height: 50px;
+  //  min-height: 4rem;
     width: 100vw;
     padding: 0 $navbarPadding;
     background-color: $white;
 
 
     &__logo-container {
-        width: 4rem;
-        height: 4rem;
-        margin-right: $margin-sm;
-        display: flex;
-        flex-direction: column;
+          /* width: 4rem; */
+    /* height: 4rem; */
+    margin-right: 0px;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
 
     }
 
     &__logo {
-        max-width: 100%;
+        width:74px;
         height: auto;
         object-fit: cover;
+        
     }
 
     &__content {
@@ -54,7 +57,7 @@
     }
 
     &__button {
-        min-width: 10rem;
+        min-width: 8rem;
 
         &:last-of-type {
             margin-left: $margin-sm;
@@ -66,7 +69,7 @@
 
         .info {
             position: relative;
-            margin-left: 3rem;
+            margin-left: 2rem;
 
             .logout {
                 position: absolute;

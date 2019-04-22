@@ -71,6 +71,7 @@
     background-color: $white;
     min-height: 30rem;
     overflow: auto;
+    width:100%;
 
     &__img-container {
         height: 22rem;
@@ -97,5 +98,21 @@
     }
 
 
+
+}
+
+.add-card{
+    background-color: white;
+    width:100%;
+      min-height: 32.3rem;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      i{
+          font-size:20px;
+          margin-bottom: 20px;
+      }
 
 }
