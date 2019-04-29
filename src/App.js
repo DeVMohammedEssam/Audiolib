@@ -15,15 +15,6 @@ class App extends Component {
         .split(" ").slice(0, -1).join(" ") + "...";
       trimmed.text(shortText);
 
-      trimmed.click(function () {
-        if (isTruncated) {
-          trimmed.text(longText);
-          isTruncated = false;
-        } else {
-          trimmed.text(shortText);
-          isTruncated = true;
-        }
-      })
     }
     //text truncate end
     truncateText(".truncate")

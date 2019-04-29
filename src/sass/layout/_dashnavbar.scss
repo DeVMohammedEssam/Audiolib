@@ -1,7 +1,36 @@
-.dashnavbar{
-    background-color:grey;
-    margin-bottom: 50px;
-   .nav-link{
-           color:white
-   }
+.dashnavbar {
+
+        background-color: grey;
+        margin-bottom: 50px;
+
+
+        ul {
+                min-height: 40px;
+                display: flex;
+                align-items: center;
+        }
+
+        .nav-link {
+                padding-top: 0;
+                padding-bottom: 0;
+                color: white;
+        }
+}
+
+.dashnavbar__item--active {
+        position: relative;
+
+        &:after {
+                content: " ";
+                position: absolute;
+                width: 80%;
+                height: 4px;
+                margin: auto;
+                left: 0;
+                right: 0;
+                bottom: -9px;
+                display: block;
+                background-color: $yellow;
+        }
+
 }

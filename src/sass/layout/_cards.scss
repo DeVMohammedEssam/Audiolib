@@ -71,7 +71,18 @@
     background-color: $white;
     min-height: 30rem;
     overflow: auto;
-    width:100%;
+    width: 100%;
+    transition: box-shadow 0.4s ease;
+    cursor: pointer;
+
+    &.clicked {
+        animation: cardOpen 1s ease 0s 1 normal forwards;
+    }
+
+    &:hover {
+        box-shadow: 0 0.5rem 1rem rgba(#000, 0.3);
+        transition: box-shadow 0.4s ease;
+    }
 
     &__img-container {
         height: 22rem;
@@ -101,18 +112,46 @@
 
 }
 
-.add-card{
+.add-card {
     background-color: white;
-    width:100%;
-      min-height: 32.3rem;
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      i{
-          font-size:20px;
-          margin-bottom: 20px;
-      }
+    width: 100%;
+    min-height: 32.3rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 
+    i {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+}
+
+.analysis__card {
+    display: flex;
+    flex-direction: column;
+    background: $white;
+    justify-content: center;
+    align-items: center;
+    min-width: 20rem;
+    max-width: 30rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 2px $darkGrey;
+    padding: 4rem 1.5rem 1.5rem;
+    margin-right: 3rem;
+    margin-bottom: 3rem;
+
+
+    img {
+        max-width: 10rem;
+        height: auto;
+    }
+
+    .text {
+        margin: 1rem 0;
+    }
+
+    .number {}
 }
