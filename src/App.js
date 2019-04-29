@@ -6,11 +6,8 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 class App extends Component {
   componentDidMount() {
-    //text truncate start
-    let isTruncated = true;
     const truncateText = (textSelector, maxLetters = 50) => {
       const trimmed = $(`${textSelector}`);
-      const longText = trimmed.text();
       let shortText = $.trim(trimmed.text()).substring(0, maxLetters)
         .split(" ").slice(0, -1).join(" ") + "...";
       trimmed.text(shortText);

@@ -38,7 +38,6 @@ class Navbar extends Component {
                         ) : (
                                 <div className="custom-navbar__buttons">
                                     <Link to="/login" className="custom-navbar__button custom-btn custom-btn--white">لوحه التحكم</Link>
-
                                 </div>
                             )
                     }

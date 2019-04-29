@@ -9,11 +9,29 @@ import Dictophone from "./Dictophone"
 
 import Footer from './layout/Footer';
 class Home extends Component {
-    state = {}
 
+    constructor(props) {
+        super(props)
+        this.state = {
+            books: []
+        }
+    }
+
+    static getDerivedStateFromProps(nextProps, prevState) {
+        console.log(nextProps)
+        if (nextProps.books !== prevState.books) {
+            return { books: nextProps.books };
+        }
+        else return null;
+    }
+    componentDidMount = () => {
+
+        this.props.dispatch(startGetAllBooks())
+    }
     render() {
         return (
             <React.Fragment>
+
                 <main className="home">
 
 
@@ -82,6 +100,14 @@ class Home extends Component {
                                 <div className="col-12 col-sm-6 col-md-6 col-xl-3">
                                     <BookCard clickable={true} url="http://placehold.it/100/100" name="احمد كمال" desc={"يتحدث هذا الكتاب عن العصور اهم احداث العصور الوسطى خصيصا الفتره منذ عام"} />
                                 </div>
+                                {/*  {booksFilter(this.state.books).map((book) => (
+                                    <div className="col-12 col-sm-6 col-md-6 col-xl-3">
+                                        <Link to={"/book/" + book._id}>
+
+
+                                            <BookCard url={book.image} name={book.title} desc={book.abstract} />
+                                        </Link></div>
+                                ))} */}
                             </div>
                             {/* book cards end */}
                         </section>

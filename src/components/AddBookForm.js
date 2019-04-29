@@ -37,13 +37,19 @@ class AddBookForm extends Component {
     }
     uploadBook = () => {
         let title = $("#title").val();
-        let publisherName = $("#publisher-name").val();
+        let writer_name = $("#writer_name").val();
         let publisher = $("#publisher").val();
         let year = $("#year").val();
         let address = $("#address").val();
         let abstract = $("#abstract").val();
-        let url = $("#url").val()
-        console.log(title, publisher, publisherName, year, address, this.state.voice, this.state.image, url, abstract)
+        let videoUrl = $("#videoUrl").val()
+        const book = { title, publisher, writer_name, year, address, voice: this.state.voice, image: this.state.image, videoUrl, abstract }
+        this.props.dispatch(startUploadBook(book)).then(() => {
+            console.log("Dispatch UploadForm")
+            this.props.history.goBack()
+        })
+
+        console.log(book, "BOOOOOOK")
     }
 
     render() {
@@ -52,7 +58,7 @@ class AddBookForm extends Component {
             <div className="book-form">
                 <div className="container">
                     <div className="row">
-                        <div className="col-3">
+                        <div className="col-md-3">
                             <div className="book-form__aside">
                                 <div className="book-form__aside__up">
                                     <div className="book-form__aside__up__image">
@@ -70,7 +76,7 @@ class AddBookForm extends Component {
                                         <input className="form-control form-control-lg" id="title" placeholder="اسم الكتاب" />
                                     </div>
                                     <div className="form-group">
-                                        <input className="form-control form-control-lg" id="publisher-name" placeholder="اسم المؤلف" />
+                                        <input className="form-control form-control-lg" id="writer_name" placeholder="اسم المؤلف" />
                                     </div>
                                     <div className="form-group">
                                         <input className="form-control form-control-lg" id="publisher" placeholder="دار النشر" />
@@ -85,7 +91,7 @@ class AddBookForm extends Component {
 
                             </div>
                         </div>
-                        <div className="col-9">
+                        <div className="col-md-9">
                             <div className="book-form__content">
                                 <div className="book-form__content__abstract">
                                     <div className="form-group">
@@ -94,15 +100,12 @@ class AddBookForm extends Component {
                                 </div>
                                 <div className="book-form__content__url">
                                     <div className="form-group">
-                                        <input className="form-control form-control-lg" id="url" placeholder="عنوان الفيديو.." />
+                                        <input className="form-control form-control-lg" id="videoUrl" placeholder="عنوان الفيديو.." />
                                     </div>
                                 </div>
                                 <div className="book-form__content__voice">
-                                    <span>
-                                        ارفع الملف الصوتى
-                        </span>
-                                    <i className="fas fa-volume-up mr-4"></i>
-                                    <div className="form-group file ">
+                                    ارفع الملف الصوتى
+                            <div className="form-group file ">
                                         <input onChange={this.onChangeVoice} className="form-control form-control-lg upload-voice" id="upload-image__file" type="file" id="url" placeholder="عنوان الفيديو.." />
                                     </div>
                                 </div>
