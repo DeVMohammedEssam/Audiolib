@@ -1,0 +1,73 @@
+.custom-btn {
+    cursor: pointer;
+   &:after{
+        content:" ";
+        width:80%;
+        height: 2px;
+        margin: 10px auto;
+        margin-bottom: 0px;
+        display: block;
+     
+    } 
+    padding: 0.4rem;
+    text-align: center;
+
+    background-color: transparent;
+
+     border:1px solid white;
+    
+
+    &:focus {
+        outline: none;
+    }
+
+    &:hover {
+        text-decoration: none;
+     
+    }
+
+    &--white {
+        background: $white;
+     
+
+        &:hover {
+          
+          
+        }
+    }
+
+    &--lightBlue {
+        background: $white;
+        border-color: $lightBlue;
+
+        &:hover {
+            background-color: $lightBlue;
+            color: $white
+        }
+    }
+}
+
+.custom-btn--active{
+    
+    &:after{
+        content:" ";
+        width:80%;
+        height: 2px;
+        margin-top: 10px;
+        display: block;
+        background-color:$blue
+    }   
+        
+}
+.dashnavbar__item--active{
+    
+    &:after{
+        content:" ";
+        width:80%;
+        height: 4px;
+        margin-top: 10px;
+        display: block;
+        background-color:white
+    }   
+        
+}

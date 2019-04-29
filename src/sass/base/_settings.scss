@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 62.5%;
+}
+
+body {
+    background: $midGrey !important;
+    overflow-x: hidden
+}
+
+.custom-container {
+    max-width: $containerWidth;
+    margin: auto;
+}
+
+.truncate {
+    //for truncated text
+    cursor: pointer;
+}

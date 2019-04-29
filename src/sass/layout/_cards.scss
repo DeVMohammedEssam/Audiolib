@@ -1,0 +1,125 @@
+.result-card {
+    background-color: $white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 5rem;
+    border-radius: 1rem;
+    max-width: 20rem;
+    min-width: 20rem;
+
+    &:not(:last-child) {
+        margin-bottom: 1rem;
+    }
+
+    &__status {
+        float: left;
+        display: block;
+
+        &--success {
+            color: $success;
+        }
+
+        &--fali {
+            color: $danger;
+        }
+
+    }
+
+    &__vertical-line {
+        width: 0.1rem;
+        display: block;
+        height: 90%;
+    }
+
+    &__date {
+        color: $darkGrey;
+    }
+}
+
+.notification-card {
+    background-color: $white;
+    padding: 1.3rem 5rem;
+    border-radius: 1rem;
+    color: $darkGrey;
+
+
+    &__sender {
+        position: relative;
+        margin-right: 2rem;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: -1rem;
+            margin: auto;
+            height: 3rem;
+            width: 0.1rem;
+            background: $midGrey;
+            display: inline-block;
+        }
+    }
+
+}
+
+.book-card {
+    @extend %dfc-col;
+    margin-bottom: $sectionsMargin;
+    justify-content: space-between;
+    background-color: $white;
+    min-height: 32.3rem;
+    max-height: 32.3rem;
+    width:100%;
+  overflow: hidden; 
+
+
+    &__img-container {
+        height: 22rem;
+        width: 100%;
+        background-position: center;
+        background-size: cover;
+            min-height: 22rem;
+    max-height: 22rem;
+
+    }
+
+    &__content {
+        @extend %dfc-col;
+        padding: 10%;
+        justify-content:initial
+
+    }
+
+    &__author-name {
+        align-self: flex-start;
+        font-size: 1.2rem;
+    }
+
+    &__describtion {
+        font-size: 1.2rem;
+        color: $darkGrey;
+        height: 100%;
+    }
+
+
+
+}
+
+.add-card{
+    background-color: white;
+    width:100%;
+        min-height: 32.3rem;
+    max-height: 32.3rem;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      i{
+          font-size:20px;
+          margin-bottom: 20px;
+      }
+
+}

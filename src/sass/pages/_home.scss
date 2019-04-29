@@ -1,0 +1,88 @@
+.home {
+
+    /* cover start */
+    &__cover {
+        background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3)), url("/images/covers/home-cover.png");
+        background-size: cover;
+        background-position: center;
+        height: $homeCoverHeight;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        color: $white;
+
+        &__content {
+            padding: 0 15%;
+        }
+
+        &__title {
+            align-self: flex-start;
+        }
+
+        &__note {
+            color: $midGrey;
+            margin: auto;
+            margin-top: 10rem;
+            margin-bottom: -10rem;
+            max-width: 50rem;
+        }
+    }
+
+    /* cover end */
+
+    /* home content  start*/
+    &__google-input-container {
+        position: relative;
+
+        button {
+            position: absolute;
+            background-color: $white;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            left: 1px;
+            height: 5rem;
+            width: 5rem;
+            transition: 0.3s ease, border 0s;
+
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+        }
+
+        button:focus,
+        button:active {
+            color: $danger;
+            background: $white;
+            border: 1px solid $midGrey;
+            transition: 0.3s ease, border 0s;
+
+            i {
+                font-size: 2rem;
+                transition: 0.3s ease;
+            }
+        }
+    }
+
+    &__google-input {
+        width: 100%;
+        padding: 1rem;
+        border-radius: 10rem 3rem 3rem 10rem;
+    }
+
+
+
+    &__cards-container {
+        margin-top: $sectionsMargin;
+    }
+
+    /* home content end */
+
+}
+
+.home__cover__logo__image{
+    width:68px
+}

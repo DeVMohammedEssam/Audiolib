@@ -1,0 +1,27 @@
+/* base */
+@import "./base/mixins";
+@import "./base/vars";
+@import "./base/settings";
+@import "./base/typography";
+@import "./base/animations";
+/* components */
+@import "./components/flashMessages";
+@import "./components/placeholders";
+/* layout */
+@import "./layout/navbar";
+@import "./layout/dashnavbar";
+
+@import "./layout/buttons";
+@import "./layout/inputs";
+@import "./layout/loaders";
+@import "./layout/cards";
+@import "./layout/forms";
+@import "./layout/footer";
+/* pages */
+@import "./pages/home";
+@import "./pages/pageNotFound";
+@import "./pages/login";
+@import "./pages/bookForm";
+
+/* vendors */
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
