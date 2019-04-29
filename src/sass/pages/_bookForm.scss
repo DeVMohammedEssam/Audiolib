@@ -48,80 +48,96 @@
     font-weight: bolder;
   }
 
-}
+  .book-form__content__panel {
+    @extend %shared-style;
+    display: flex;
+    align-items: center;
 
-.blank-button {
-  border: 0px;
-  background: none;
-  outline: none;
-  color: white
-}
+    * {
+      flex: 1
+    }
+  }
 
-.upload-image__file {
-  opacity: 0;
-  width: 100%;
-  top: 2px;
-  height: 100%;
-  position: absolute;
-  cursor: pointer;
+  .blank-button {
+    border: 0px;
+    background: none;
+    outline: none;
+    color: white
+  }
 
+  .blank-button {
+    border: 0px;
+    background: none;
+    outline: none;
+    color: white
+  }
 
-}
-
-.file {
-  opacity: 0.0;
-  width: 100%;
-  top: 2px;
-  position: absolute;
-
-
-}
-
-.book-form__content__abstract {
-  @extend %shared-style
-}
-
-.book-form__content__url {
-  @extend %shared-style
-}
-
-.book-form__content__voice {
-  @extend %shared-style;
-  position: relative;
-  cursor: pointer;
-  text-align: center;
-
-  * {
+  .upload-image__file {
+    opacity: 0;
+    width: 100%;
+    top: 2px;
+    height: 100%;
+    position: absolute;
     cursor: pointer;
 
+
   }
 
-  transition: background-color 0.4s ease;
+  .file {
+    opacity: 0.0;
+    width: 100%;
+    top: 2px;
+    position: absolute;
 
-  &:hover {
-    background-color: darken($white, 3%);
+
+  }
+
+  .book-form__content__abstract {
+    @extend %shared-style
+  }
+
+  .book-form__content__url {
+    @extend %shared-style
+  }
+
+  .book-form__content__voice {
+    @extend %shared-style;
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+
+    * {
+      cursor: pointer;
+
+    }
+
     transition: background-color 0.4s ease;
+
+    &:hover {
+      background-color: darken($white, 3%);
+      transition: background-color 0.4s ease;
+    }
+
+    .fa-volume-up {
+      color: $darkGrey;
+    }
   }
 
-  .fa-volume-up {
-    color: $darkGrey;
+  .book-form__content__btn {
+    float: left;
+    background-color: #03715B;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+
+
+    &:hover {
+      animation: wiggle 0.4s linear 0s infinite alternate forwards;
+    }
   }
-}
 
-.book-form__content__btn {
-  float: left;
-  background-color: #03715B;
-  color: white;
-  padding: 10px;
-  border-radius: 10px;
-
-
-  &:hover {
-    animation: wiggle 0.4s linear 0s infinite alternate forwards;
+  .book-form__aside__info {
+    @extend %shared-style;
+    height: 254px;
   }
-}
-
-.book-form__aside__info {
-  @extend %shared-style;
-  height: 254px
 }

@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import $ from "jquery"
-
-export default class AddBookForm extends Component {
+import { connect } from "react-redux"
+import { startUploadBook } from "../redux/actions/dashboard"
+import { withRouter } from "react-router-dom"
+class AddBookForm extends Component {
 
     constructor(props) {
         super(props)
@@ -120,3 +122,5 @@ export default class AddBookForm extends Component {
         )
     }
 }
+
+export default withRouter(connect()(AddBookForm))

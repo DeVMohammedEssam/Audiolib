@@ -28,10 +28,18 @@ export const login = () => {
         console.log(axios.defaults.headers.common)
         return axios.get("http://localhost:8000/api/user/",{ headers: { Authorization: localStorage.getItem("userToken") } }).then(data => {
             userData = data.data.user;
-           if(!window.location.href.includes("dashboard")&&window.location.href!="/"){
+            console.log("DA|TA USE|R ",data.data)
+            if(!data.data.success){
+                            window.location.href="/"
+
+            }else{
+        if(!window.location.href.includes("dashboard")&&window.location.href!="/"&&!window.location.href.includes("book")){
+        
                window.location.href="/dashboard/analysis"
            }
             dispatch(innerLogin(userData));
+            }
+         
          
 
         })

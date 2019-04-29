@@ -84,18 +84,26 @@
         transition: box-shadow 0.4s ease;
     }
 
+    min-height: 32.3rem;
+    max-height: 32.3rem;
+    width:100%;
+    overflow: hidden;
+
+
     &__img-container {
         height: 22rem;
         width: 100%;
         background-position: center;
         background-size: cover;
+        min-height: 22rem;
+        max-height: 22rem;
 
     }
 
     &__content {
         @extend %dfc-col;
         padding: 10%;
-
+        justify-content: initial
     }
 
     &__author-name {
@@ -106,6 +114,7 @@
     &__describtion {
         font-size: 1.2rem;
         color: $darkGrey;
+        height: 100%;
     }
 
 
@@ -151,6 +160,20 @@
 
     .text {
         margin: 1rem 0;
+    }
+
+    width:100%;
+    min-height: 32.3rem;
+    max-height: 32.3rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    i {
+        font-size: 20px;
+        margin-bottom: 20px;
     }
 
     .number {}

@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
 import BookCard from './layout/BookCard';
+import { connect } from "react-redux"
+import { Link } from "react-router-dom"
+import { startGetAllBooks } from "../redux/actions/dashboard"
+import { booksFilter } from "../filterations/book"
+import SpeechRecognition from 'react-speech-recognition'
+import Dictophone from "./Dictophone"
+
 import Footer from './layout/Footer';
 class Home extends Component {
     state = {}
@@ -8,6 +15,8 @@ class Home extends Component {
         return (
             <React.Fragment>
                 <main className="home">
+
+
                     <section className="home__cover ">
                         <div className="home__cover__content" >
                             <div className="home__cover__logo"> <img src="./images/icons/icons8-international-music-96.png" class="home__cover__logo__image" /></div>
@@ -84,4 +93,7 @@ class Home extends Component {
     }
 }
 
-export default Home;
+const mapStateToProps = (state) => ({
+    books: state.dashboard.books
+})
+export default connect(mapStateToProps)(Home)
