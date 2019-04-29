@@ -44,6 +44,7 @@
     color: $darkGrey;
 
 
+
     &__sender {
         position: relative;
         margin-right: 2rem;
@@ -74,6 +75,8 @@
     width: 100%;
     transition: box-shadow 0.4s ease;
     cursor: pointer;
+    border: 1px solid $midGrey;
+
 
     &.clicked {
         animation: cardOpen 1s ease 0s 1 normal forwards;
