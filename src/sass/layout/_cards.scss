@@ -69,21 +69,26 @@
     margin-bottom: $sectionsMargin;
     justify-content: space-between;
     background-color: $white;
-    min-height: 30rem;
-    overflow: auto;
+    min-height: 32.3rem;
+    max-height: 32.3rem;
     width:100%;
+  overflow: hidden; 
+
 
     &__img-container {
         height: 22rem;
         width: 100%;
         background-position: center;
         background-size: cover;
+            min-height: 22rem;
+    max-height: 22rem;
 
     }
 
     &__content {
         @extend %dfc-col;
         padding: 10%;
+        justify-content:initial
 
     }
 
@@ -95,6 +100,7 @@
     &__describtion {
         font-size: 1.2rem;
         color: $darkGrey;
+        height: 100%;
     }
 
 
@@ -104,7 +110,8 @@
 .add-card{
     background-color: white;
     width:100%;
-      min-height: 32.3rem;
+        min-height: 32.3rem;
+    max-height: 32.3rem;
       text-align: center;
       display: flex;
       align-items: center;

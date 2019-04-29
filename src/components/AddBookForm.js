@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import $ from "jquery"
-
-export default class AddBookForm extends Component {
+import {connect} from "react-redux"
+import {startUploadBook} from "../redux/actions/dashboard"
+import {withRouter} from "react-router-dom"
+class AddBookForm extends Component {
 
 constructor(props){
     super(props)
@@ -35,13 +37,19 @@ onChangeVoice=()=>{
 }
 uploadBook=()=>{
    let title=$("#title").val();
-   let publisherName=$("#publisher-name").val();
+   let writer_name=$("#writer_name").val();
    let publisher=$("#publisher").val();
    let year=$("#year").val();
    let address=$("#address").val();
    let abstract=$("#abstract").val();
-   let url=$("#url").val()
-   console.log(title,publisher,publisherName,year,address,this.state.voice,this.state.image,url,abstract)
+   let videoUrl=$("#videoUrl").val()
+   const book={title,publisher,writer_name,year,address,voice:this.state.voice,image:this.state.image,videoUrl,abstract}
+   this.props.dispatch(startUploadBook(book)).then(()=>{
+       console.log("Dispatch UploadForm")
+       this.props.history.goBack()
+   })
+   
+      console.log(book,"BOOOOOOK")
 }
 
   render() {
@@ -50,7 +58,7 @@ uploadBook=()=>{
              <div className="book-form">
           <div className="container">
             <div className="row">
-                <div className="col-3">
+                <div className="col-md-3">
                     <div className="book-form__aside">
                         <div className="book-form__aside__up">
                         <div className="book-form__aside__up__image">
@@ -68,7 +76,7 @@ uploadBook=()=>{
                                 <input className="form-control form-control-lg" id="title" placeholder="اسم الكتاب" />
                             </div>
                                <div className="form-group">
-                                <input className="form-control form-control-lg" id="publisher-name" placeholder="اسم المؤلف" />
+                                <input className="form-control form-control-lg" id="writer_name" placeholder="اسم المؤلف" />
                             </div>
                                <div className="form-group">
                                 <input className="form-control form-control-lg" id="publisher" placeholder="دار النشر" />
@@ -83,7 +91,7 @@ uploadBook=()=>{
 
                     </div>
                 </div>
-                 <div className="col-9">
+                 <div className="col-md-9">
                     <div className="book-form__content">
                         <div className="book-form__content__abstract">
                            <div className="form-group">
@@ -92,7 +100,7 @@ uploadBook=()=>{
                         </div>
                         <div className="book-form__content__url">
                             <div className="form-group">
-                                <input className="form-control form-control-lg" id="url" placeholder="عنوان الفيديو.." />
+                                <input className="form-control form-control-lg" id="videoUrl" placeholder="عنوان الفيديو.." />
                             </div>
                         </div>
                          <div className="book-form__content__voice">
@@ -117,3 +125,5 @@ uploadBook=()=>{
     )
   }
 }
+
+export default withRouter(connect()(AddBookForm))

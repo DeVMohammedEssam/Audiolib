@@ -22,6 +22,15 @@
       position:relative
       
 }
+.book-form__content__panel{
+      @extend %shared-style;
+      display: flex;
+      align-items: center;
+
+      *{
+        flex:1
+      }
+}
 .blank-button{
     border:0px;
     background: none;
@@ -62,6 +71,13 @@
     color:white;
     padding: 10px;
     border-radius:10px;
+}
+.book-form__content__btn__pop {
+      
+    background-color: #03715B;
+    color:white;
+    padding: 10px;
+    border-radius:20px;
 }
 .book-form__aside__info{
      @extend %shared-style;
