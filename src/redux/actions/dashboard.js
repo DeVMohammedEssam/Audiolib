@@ -1,13 +1,13 @@
 
 import axios from "axios"
-import config from "../../config"
+import config from "../../config";
 const uploadBook = (data) => ({
     type: "ADD_BOOK",
     data
 })
 export const startUploadBook = (data) => {
     return (dispatch) => {
-        return axios.post("/api/dashboard/book", { data }, {
+        return axios.post(`${config.serverURL}/api/dashboard/book`, { data }, {
 
         }).then((response) => {
             dispatch(uploadBook(response.data))
@@ -22,7 +22,7 @@ const getAllBooks = (books) => ({
 
 export const startGetAllBooks = () => {
     return (dispatch) => {
-        axios.get("http://localhost:8000/api/dashboard/book", {
+        axios.get(`${config.serverURL}/api/dashboard/book`, {
 
         }).then((response) => {
             dispatch(getAllBooks(response.data.books))

@@ -6,6 +6,7 @@ import { startGetAllBooks } from "../redux/actions/dashboard"
 import { booksFilter } from "../filterations/book"
 import SpeechRecognition from 'react-speech-recognition'
 import Dictophone from "./Dictophone"
+import $ from "jquery";
 
 import Footer from './layout/Footer';
 class Home extends Component {
@@ -13,27 +14,25 @@ class Home extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            books: []
+            books: [],
+            loaded: false
         }
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
         console.log(nextProps)
         if (nextProps.books !== prevState.books) {
-            return { books: nextProps.books };
+            return { books: nextProps.books, loaded: true };
         }
         else return null;
     }
     componentDidMount = () => {
-
-        this.props.dispatch(startGetAllBooks())
+        this.props.dispatch(startGetAllBooks());
     }
     render() {
         return (
             <React.Fragment>
-
                 <main className="home">
-
 
                     <section className="home__cover ">
                         <div className="home__cover__content" >
@@ -44,74 +43,55 @@ class Home extends Component {
                             <p className="home__cover__note">ملاحظه: يمكنك البحث بالصوت او الكتابه ويفضل البحث بالانجليزيه اذا كنت تستخدم الصوت</p>
                         </div>
                     </section>
+                    {this.state.loaded ? (
 
-                    <div className="custom-container mt-5">
-                        <div className="row">
-                            <div className="col-12">
-                                <div className="home__google-input-container">
-                                    <input type="text" className="home__google-input custom-input" placeholder="ابحث عن..." />
-                                    <button type="button" className="custom-btn"><i className="fas fa-microphone"></i></button>
+                        <div className="custom-container mt-5 " style={{ minHeight: "400px" }}>
+                            <div className="row">
+                                <div className="col-12">
+                                    <div className="home__google-input-container">
+                                        <input type="text" className="home__google-input custom-input" placeholder="ابحث عن..." />
+                                        <button type="button" className="custom-btn"><i className="fas fa-microphone"></i></button>
+                                    </div>
                                 </div>
                             </div>
+                            {booksFilter(this.state.books.length) === 0 ? (
+                                <h3 className="text-center mt-5">لا يوجد كتب</h3>
+                            ) : (
+                                    <React.Fragment>
+
+
+                                        <section className="home__cards-container">
+                                            <div className="row">
+                                                {booksFilter(this.state.books).map((book) => {
+                                                    console.log(book);
+                                                    return (
+                                                        <div className="col-12 col-sm-6 col-md-6 col-xl-3">
+                                                            <BookCard
+                                                                clickable={true}
+                                                                id={book._id}
+                                                                url={book.image}
+                                                                name={book.title}
+                                                                desc={book.abstract}
+                                                            />
+                                                        </div>
+                                                    )
+                                                }
+                                                )}
+                                            </div>
+                                            {/* book cards end */}
+                                        </section>
+                                    </React.Fragment>
+                                )}
                         </div>
 
-                        {/* book cards start */}
-                        <section className="home__cards-container">
-                            <div className="row">
-                                <div className="col-12 col-sm-6 col-md-6 col-xl-3">
-                                    <BookCard clickable={true} url="http://placehold.it/100/100" name="احمد كمال" desc={"يتحدث هذا الكتاب عن العصور اهم احداث العصور الوسطى خصيصا الفتره منذ عام"} />
-                                </div>
-                                <div className="col-12 col-sm-6 col-md-6 col-xl-3">
-                                    <BookCard clickable={true} url="http://placehold.it/100/100" name="احمد كمال" desc={"يتحدث هذا الكتاب عن العصور اهم احداث العصور الوسطى خصيصا الفتره منذ عام"} />
-                                </div>
-                                <div className="col-12 col-sm-6 col-md-6 col-xl-3">
-                                    <BookCard clickable={true} url="http://placehold.it/100/100" name="احمد كمال" desc={"يتحدث هذا الكتاب عن العصور اهم احداث العصور الوسطى خصيصا الفتره منذ عام"} />
-                                </div>
-                                <div className="col-12 col-sm-6 col-md-6 col-xl-3">
-                                    <BookCard clickable={true} url="http://placehold.it/100/100" name="احمد كمال" desc={"يتحدث هذا الكتاب عن العصور اهم احداث العصور الوسطى خصيصا الفتره منذ عام"} />
-                                </div>
-                                <div className="col-12 col-sm-6 col-md-6 col-xl-3">
-                                    <BookCard clickable={true} url="http://placehold.it/100/100" name="احمد كمال" desc={"يتحدث هذا الكتاب عن العصور اهم احداث العصور الوسطى خصيصا الفتره منذ عام"} />
-                                </div>
-                                <div className="col-12 col-sm-6 col-md-6 col-xl-3">
-                                    <BookCard clickable={true} url="http://placehold.it/100/100" name="احمد كمال" desc={"يتحدث هذا الكتاب عن العصور اهم احداث العصور الوسطى خصيصا الفتره منذ عام"} />
-                                </div>
-                                <div className="col-12 col-sm-6 col-md-6 col-xl-3">
-                                    <BookCard clickable={true} url="http://placehold.it/100/100" name="احمد كمال" desc={"يتحدث هذا الكتاب عن العصور اهم احداث العصور الوسطى خصيصا الفتره منذ عام"} />
-                                </div>
-                                <div className="col-12 col-sm-6 col-md-6 col-xl-3">
-                                    <BookCard clickable={true} url="http://placehold.it/100/100" name="احمد كمال" desc={"يتحدث هذا الكتاب عن العصور اهم احداث العصور الوسطى خصيصا الفتره منذ عام"} />
-                                </div>
-                                <div className="col-12 col-sm-6 col-md-6 col-xl-3">
-                                    <BookCard clickable={true} url="http://placehold.it/100/100" name="احمد كمال" desc={"يتحدث هذا الكتاب عن العصور اهم احداث العصور الوسطى خصيصا الفتره منذ عام"} />
-                                </div>
-                                <div className="col-12 col-sm-6 col-md-6 col-xl-3">
-                                    <BookCard clickable={true} url="http://placehold.it/100/100" name="احمد كمال" desc={"يتحدث هذا الكتاب عن العصور اهم احداث العصور الوسطى خصيصا الفتره منذ عام"} />
-                                </div>
-                                <div className="col-12 col-sm-6 col-md-6 col-xl-3">
-                                    <BookCard clickable={true} url="http://placehold.it/100/100" name="احمد كمال" desc={"يتحدث هذا الكتاب عن العصور اهم احداث العصور الوسطى خصيصا الفتره منذ عام"} />
-                                </div>
-                                <div className="col-12 col-sm-6 col-md-6 col-xl-3">
-                                    <BookCard clickable={true} url="http://placehold.it/100/100" name="احمد كمال" desc={"يتحدث هذا الكتاب عن العصور اهم احداث العصور الوسطى خصيصا الفتره منذ عام"} />
-                                </div>
-                                <div className="col-12 col-sm-6 col-md-6 col-xl-3">
-                                    <BookCard clickable={true} url="http://placehold.it/100/100" name="احمد كمال" desc={"يتحدث هذا الكتاب عن العصور اهم احداث العصور الوسطى خصيصا الفتره منذ عام"} />
-                                </div>
-                                <div className="col-12 col-sm-6 col-md-6 col-xl-3">
-                                    <BookCard clickable={true} url="http://placehold.it/100/100" name="احمد كمال" desc={"يتحدث هذا الكتاب عن العصور اهم احداث العصور الوسطى خصيصا الفتره منذ عام"} />
-                                </div>
-                                {/*  {booksFilter(this.state.books).map((book) => (
-                                    <div className="col-12 col-sm-6 col-md-6 col-xl-3">
-                                        <Link to={"/book/" + book._id}>
 
-
-                                            <BookCard url={book.image} name={book.title} desc={book.abstract} />
-                                        </Link></div>
-                                ))} */}
+                    ) : (
+                            <div className="loader">
+                                <img src="/loadingGif.gif" alt=""/>
                             </div>
-                            {/* book cards end */}
-                        </section>
-                    </div>
+
+                        )}
+
                 </main>
                 <Footer />
             </React.Fragment>

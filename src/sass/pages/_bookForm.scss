@@ -47,97 +47,97 @@
     color: $darkGrey;
     font-weight: bolder;
   }
+}
 
-  .book-form__content__panel {
-    @extend %shared-style;
-    display: flex;
-    align-items: center;
+.book-form__content__panel {
+  @extend %shared-style;
+  display: flex;
+  align-items: center;
 
-    * {
-      flex: 1
-    }
+  * {
+    flex: 1
   }
+}
 
-  .blank-button {
-    border: 0px;
-    background: none;
-    outline: none;
-    color: white
-  }
+.blank-button {
+  border: 0px;
+  background: none;
+  outline: none;
+  color: white
+}
 
-  .blank-button {
-    border: 0px;
-    background: none;
-    outline: none;
-    color: white
-  }
+.blank-button {
+  border: 0px;
+  background: none;
+  outline: none;
+  color: white
+}
 
-  .upload-image__file {
-    opacity: 0;
-    width: 100%;
-    top: 2px;
-    height: 100%;
-    position: absolute;
+.upload-image__file {
+  opacity: 0;
+  width: 100%;
+  top: 2px;
+  height: 100%;
+  position: absolute;
+  cursor: pointer;
+
+
+}
+
+.file {
+  opacity: 0.0;
+  width: 100%;
+  top: 2px;
+  position: absolute;
+
+
+}
+
+.book-form__content__abstract {
+  @extend %shared-style
+}
+
+.book-form__content__url {
+  @extend %shared-style
+}
+
+.book-form__content__voice {
+  @extend %shared-style;
+  position: relative;
+  cursor: pointer;
+  text-align: center;
+
+  * {
     cursor: pointer;
 
-
   }
 
-  .file {
-    opacity: 0.0;
-    width: 100%;
-    top: 2px;
-    position: absolute;
+  transition: background-color 0.4s ease;
 
-
-  }
-
-  .book-form__content__abstract {
-    @extend %shared-style
-  }
-
-  .book-form__content__url {
-    @extend %shared-style
-  }
-
-  .book-form__content__voice {
-    @extend %shared-style;
-    position: relative;
-    cursor: pointer;
-    text-align: center;
-
-    * {
-      cursor: pointer;
-
-    }
-
+  &:hover {
+    background-color: darken($white, 3%);
     transition: background-color 0.4s ease;
-
-    &:hover {
-      background-color: darken($white, 3%);
-      transition: background-color 0.4s ease;
-    }
-
-    .fa-volume-up {
-      color: $darkGrey;
-    }
   }
 
-  .book-form__content__btn {
-    float: left;
-    background-color: #03715B;
-    color: white;
-    padding: 10px;
-    border-radius: 10px;
-
-
-    &:hover {
-      animation: wiggle 0.4s linear 0s infinite alternate forwards;
-    }
+  .fa-volume-up {
+    color: $darkGrey;
   }
+}
 
-  .book-form__aside__info {
-    @extend %shared-style;
-    height: 254px;
+.book-form__content__btn {
+  float: left;
+  background-color: #03715B;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+
+
+  &:hover {
+    animation: wiggle 0.4s linear 0s infinite alternate forwards;
   }
+}
+
+.book-form__aside__info {
+  @extend %shared-style;
+  height: 254px;
 }

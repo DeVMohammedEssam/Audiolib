@@ -54,11 +54,10 @@ class AddBookForm extends Component {
 
     render() {
         return (
-
             <div className="book-form">
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-3">
+                        <div className="col-3">
                             <div className="book-form__aside">
                                 <div className="book-form__aside__up">
                                     <div className="book-form__aside__up__image">
@@ -76,7 +75,7 @@ class AddBookForm extends Component {
                                         <input className="form-control form-control-lg" id="title" placeholder="اسم الكتاب" />
                                     </div>
                                     <div className="form-group">
-                                        <input className="form-control form-control-lg" id="writer_name" placeholder="اسم المؤلف" />
+                                        <input className="form-control form-control-lg" id="publisher-name" placeholder="اسم المؤلف" />
                                     </div>
                                     <div className="form-group">
                                         <input className="form-control form-control-lg" id="publisher" placeholder="دار النشر" />
@@ -91,7 +90,7 @@ class AddBookForm extends Component {
 
                             </div>
                         </div>
-                        <div className="col-md-9">
+                        <div className="col-9">
                             <div className="book-form__content">
                                 <div className="book-form__content__abstract">
                                     <div className="form-group">
@@ -104,8 +103,11 @@ class AddBookForm extends Component {
                                     </div>
                                 </div>
                                 <div className="book-form__content__voice">
-                                    ارفع الملف الصوتى
-                            <div className="form-group file ">
+                                    <span>
+                                        ارفع الملف الصوتى
+                        </span>
+                                    <i className="fas fa-volume-up mr-4"></i>
+                                    <div className="form-group file ">
                                         <input onChange={this.onChangeVoice} className="form-control form-control-lg upload-voice" id="upload-image__file" type="file" id="url" placeholder="عنوان الفيديو.." />
                                     </div>
                                 </div>
@@ -119,8 +121,6 @@ class AddBookForm extends Component {
                     </div>
                 </div>
             </div>
-
-
 
         )
     }

@@ -15,16 +15,29 @@ class BookCard extends Component {
             }, 1000)
         }
     }
+    componentDidMount() {
+        const truncateText = (textSelector, maxLetters = 70) => {
+            const trimmed = $(`${textSelector}`);
+            let shortText = $.trim(trimmed.text()).substring(0, maxLetters)
+                .split(" ").slice(0, -1).join(" ") + "...";
+            trimmed.text(shortText);
+
+        }
+        //text truncate end
+        truncateText(".truncate")
+    }
     render() {
-        const { url, name, desc, clickable = false } = this.props;
+        const { id, url, name, desc, clickable = false } = this.props;
         if (clickable && this.state.redirect) {
-            return (<Redirect push to="/book/:id" />)
+            return (<Redirect push to={`/book/${id}`} />)
         }
         return (
+
             <div className={`book-card `} onClick={this.handleCardClick}>
+
                 <div className="book-card__img-container" style={{ backgroundImage: `url(${url})` }}>
                 </div>
-                <div className="book-card__content">
+                <div className="book-card__content ">
                     <span className="book-card__author-name">{name}</span>
                     <span className="book-card__describtion truncate">{desc}</span>
                 </div>
