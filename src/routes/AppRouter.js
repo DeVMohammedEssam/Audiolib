@@ -16,7 +16,7 @@ const AppRouter = () => {
 
             <Switch>
                 <Route exact path="/" component={Home} />
-                <Route path="/book/:id" component={() => (<div>book details</div>)} />
+                <Route path="/book/:id" component={BookView} />
                 <Route path="/contact" component={() => (<div>contact</div>)} />
                 <Route path="/privacy" component={() => (<div>privacy</div>)} />
                 <Route path="/login" component={Login} />
