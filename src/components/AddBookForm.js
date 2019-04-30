@@ -57,14 +57,12 @@ class AddBookForm extends Component {
             <div className="book-form">
                 <div className="container">
                     <div className="row">
-                        <div className="col-3">
+                        <div className="col-12 col-md-3">
                             <div className="book-form__aside">
                                 <div className="book-form__aside__up">
                                     <div className="book-form__aside__up__image">
                                         <input onChange={this.onChangeHandler} type="file" className="upload-image__file" />
-                                        <i className="fa fa-camera">
-
-                                        </i>
+                                        <i className="fa fa-camera"></i>
                                         <p>Upload Image</p>
                                     </div>
                                 </div>
@@ -90,7 +88,7 @@ class AddBookForm extends Component {
 
                             </div>
                         </div>
-                        <div className="col-9">
+                        <div className="col-12 col-md-9 ">
                             <div className="book-form__content">
                                 <div className="book-form__content__abstract">
                                     <div className="form-group">

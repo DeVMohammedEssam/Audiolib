@@ -9,14 +9,13 @@ import { hot } from 'react-hot-loader';
 import Navbar from "../components/layout/Navbar";
 import history from "./history"
 import PageNotFound from "../components/PageNotFound";
-const AppRouter = () => {
+import "bootstrap/dist/js/bootstrap.bundle";
 
+const AppRouter = () => {
     return (
         <Router history={history}>
             <Navbar />
-
             <Switch>
-
                 <Route exact path="/" component={Home} />
                 <Route path="/book/:id" component={BookView} />
                 <Route path="/contact" component={() => (<div>contact</div>)} />

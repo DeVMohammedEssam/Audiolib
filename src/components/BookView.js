@@ -3,6 +3,7 @@ import $ from "jquery"
 import { connect } from "react-redux"
 import { startGetBook } from "../redux/actions/index"
 import { withRouter } from "react-router-dom"
+import GetBookModal from './layout/GetBookModal';
 class BookView extends Component {
 
   constructor(props) {
@@ -27,10 +28,11 @@ class BookView extends Component {
   render() {
     let book = this.state.book
     return this.state.book ? (
-      <div className="book-form" style={{
-        marginBottom: "150px;"
+      <div className="book-form pt-5" style={{
+        marginBottom: "150px"
       }}>
         <div className="container">
+          <GetBookModal />
           <div className="row">
             <div className="col-md-3">
               <div className="book-form__aside">
@@ -45,65 +47,57 @@ class BookView extends Component {
                 <div className="book-form__aside__info">
                   <p>معلومات عن الكتاب</p>
                   <hr />
-                  <div className="book-form__inside__info__row">
-                    اسم الكتاب : {book.title}
+                  <div className="book-form__inside__info__row mb-3">
+                    <span className="font-weight-bold"> اسم الكتاب</span> : {book.title}
                   </div>
-                  <div className="book-form__inside__info__row">
-                    اسم المؤلف : {book.writer_name}
-                  </div>
-
-                  <div className="book-form__inside__info__row">
-                    دار النشر: {book.publisher}
-                  </div>
-                  <div className="book-form__inside__info__row">
-                    سنه النشر: {book.year}
-                  </div>
-                  <div className="book-form__inside__info__row">
-                    مكان النشر: {book.address}
+                  <div className="book-form__inside__info__row mb-3">
+                    <span className="font-weight-bold"> اسم المؤلف </span>: {book.writer_name}
                   </div>
 
+                  <div className="book-form__inside__info__row mb-3">
+
+                    <span className="font-weight-bold">  دار النشر </span>: {book.publisher}
+                  </div>
+                  <div className="book-form__inside__info__row mb-3">
+                    <span className="font-weight-bold"> سنه النشر </span>: {book.year}
+                  </div>
+                  <div className="book-form__inside__info__row">
+                    <span className="font-weight-bold"> مكان النشر  </span>: {book.address}
+                  </div>
                 </div>
+
 
               </div>
             </div>
             <div className="col-md-9">
-              <div className="book-form__content">
-                <div className="book-form__content__abstract">
+              <div className="book-form__content " >
+                <div
+                  className="book-form__content__abstract"
+                  style={{ minHeight: "300px", overflow: "hidden", position: "relative", paddingBottom: "6rem" }}
+                >
                   <h3>مستلخص الكتاب</h3>
                   <hr />
                   <p>
                     {book.abstract}
                   </p>
-                </div>
+                  <div className="wrapper">
+                    <div className="book-form__content__btn" style={{ position: "absolute", bottom: "10px", left: "10px" }}>
+                      <button
+                        type="button"
+                        className="blank-button"
+                        data-toggle="modal"
+                        data-target="#getBookModal"
+                      >
+                        الحصول على الكتاب
+                  </button>
 
-                <div className="book-form__content__panel">
 
-                  <div className="">
-                    <button type="button" data-toggle="modal" data-target="#exampleModal" className="book-form__content__btn__pop blank-button">
-                      احصل على الكتاب
 
-                               </button>
-                  </div>
-
-                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                          ...
-      </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
-                      </div>
                     </div>
                   </div>
+                </div>
+
+                <div className="book-form__content__panel" >
 
                   <audio src={book.voiceUrl} controls />
 
@@ -120,10 +114,6 @@ class BookView extends Component {
             </div>
           </div>
         </div>
-
-
-
-
       </div>
 
     ) : (
