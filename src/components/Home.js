@@ -15,8 +15,12 @@ class Home extends Component {
         super(props)
         this.state = {
             books: [],
-            loaded: false
+            loaded: false,
+            word:""
         }
+    }
+    onChangeWord=(e)=>{
+            this.setState({word:e.target.value})
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
@@ -49,7 +53,7 @@ class Home extends Component {
                             <div className="row">
                                 <div className="col-12">
                                     <div className="home__google-input-container">
-                                        <input type="text" className="home__google-input custom-input" placeholder="ابحث عن..." />
+                                        <input onChange={this.onChangeWord} type="text" className="home__google-input custom-input" placeholder="ابحث عن..." />
                                         <button type="button" className="custom-btn"><i className="fas fa-microphone"></i></button>
                                     </div>
                                 </div>
@@ -62,7 +66,7 @@ class Home extends Component {
 
                                         <section className="home__cards-container">
                                             <div className="row">
-                                                {booksFilter(this.state.books).map((book) => {
+                                                {booksFilter(this.state.books,this.state.word).map((book) => {
                                                     console.log(book);
                                                     return (
                                                         <div className="col-12 col-sm-6 col-md-6 col-xl-3">
