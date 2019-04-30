@@ -9,7 +9,9 @@ class Books extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      books: []
+      books: [],
+      loaded:false
+
     }
   }
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -20,13 +22,16 @@ class Books extends Component {
     else return null;
   }
   componentDidMount = () => {
-    this.props.dispatch(startGetAllBooks())
+    this.props.dispatch(startGetAllBooks()).then(()=>{
+      this.setState({loaded:true})
+    })
   }
   render() {
     return (
-
+<div className="books">
+{this.state.loaded?
       <div className="row">
-
+     
         <div className="col-3">
           <Link to="/dashboard/books/new">
             <AddCard title="اضافه كتاب " icon="fa fa-plus" />
@@ -41,8 +46,14 @@ class Books extends Component {
             </Link>
           </div>
         ))}
-      </div>
-
+      </div>:
+      <div className="loader">
+                                
+                                <img src="/805(2).gif" />
+                                </div>
+      
+      }
+</div>
     )
   }
 }

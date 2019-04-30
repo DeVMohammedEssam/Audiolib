@@ -22,7 +22,7 @@ const getAllBooks = (books) => ({
 
 export const startGetAllBooks = () => {
     return (dispatch) => {
-        axios.get(`${config.serverURL}/api/dashboard/book`, {
+       return axios.get(`${config.serverURL}/api/dashboard/book`, {
 
         }).then((response) => {
             dispatch(getAllBooks(response.data.books))
