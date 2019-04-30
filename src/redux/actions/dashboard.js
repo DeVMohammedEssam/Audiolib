@@ -30,3 +30,22 @@ export const startGetAllBooks = () => {
         })
     }
 }
+
+
+
+
+const deleteBook = (id) => ({
+    type: "DELETE_BOOK",
+    id
+})
+
+export const startDeleteBook = (id) => {
+    return (dispatch) => {
+       return axios.delete(`${config.serverURL}/api/dashboard/book/${id}`, {
+
+        }).then((response) => {
+            dispatch(deleteBook(id))
+
+        })
+    }
+}

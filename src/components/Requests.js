@@ -22,7 +22,7 @@ export default class Requests extends Component {
           <div className="row">
             {this.state.messages.map((message)=>(
               <div className="col-12">
-              <RequestsCard email={message.email} phone={message.phone} name={message.name} message={message.text} />
+              <RequestsCard email={message.email} title={message.title} phone={message.phone} name={message.name} message={message.text} />
             </div>
             ))}
             

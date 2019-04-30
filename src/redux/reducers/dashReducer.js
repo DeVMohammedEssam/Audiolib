@@ -10,6 +10,11 @@ const userReducer = (state = {books:[]}, action) => {
             ...state,
             books:action.books
         }
+         case "DELETE_BOOK":
+        return {
+            ...state,
+            books:state.books.filter((book)=>!book.id==action.id)
+        }
         
         default: return state;
     }

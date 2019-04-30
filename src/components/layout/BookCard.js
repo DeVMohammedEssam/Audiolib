@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
 import $ from "jquery";
+import { connect } from "react-redux"
+
 import ConfirmationModal from './ConfirmationModal';
 import config from "../../config";
+import {startDeleteBook} from "../../redux/actions/dashboard"
 import Axios from "axios";
 class BookCard extends Component {
     state = {
@@ -20,11 +23,11 @@ class BookCard extends Component {
     deleteBook = (e) => {
         e.preventDefault();
         this.setState(() => ({ redirect: false }));
-        Axios.delete(`${config.serverURL}/api/dashboard/book/${this.props.id}`).then(({ data }) => {
-            if (data.success) {
-                $("button[data-dismiss='modal'").trigger("click");
-            }
-        })
+       this.props.dispatch(startDeleteBook(this.props.id)).then(()=>{
+             $("#confirmationModal").modal("hide")
+            
+       })
+     
     }
     componentDidMount() {
         const truncateText = (textSelector, maxLetters = 70) => {
@@ -69,4 +72,4 @@ class BookCard extends Component {
     }
 }
 
-export default BookCard;
+export default connect()(BookCard);
