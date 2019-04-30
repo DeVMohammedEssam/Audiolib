@@ -1,18 +1,31 @@
 import React, { Component } from 'react';
 class HomeModal extends Component {
-    state = {}
+    state = {
+        lang: ""
+    }
+    getChoosenLang = (e) => {
+        const { keyCode } = e;
+        if (keyCode == 97) {//pressed 1 (Arabic)
+            this.setState(() => ({ lang: "ar" }))
+        }
+        if (keyCode == 98) {//pressed 2 (English)
+            this.setState(() => ({ lang: "en" }))
+        }
+    }
     render() {
         return (
-            <div className="modal fade" id="homeModal" tabindex="-1" role="dialog" aria-labelledby="homeModalTitle" aria-hidden="true">
+            <div className="modal fade" id="homeModal" tabindex="-1" role="dialog" aria-labelledby="homeModalTitle" aria-hidden="true" onKeyDown={this.getChoosenLang}>
                 <div className="modal-dialog modal-dialog-centered" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
                             <button type="button text-right" className="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true" className="modalClose">&times;</span>
+                                <p aria-hidden="true" className="modalClose">&times;</p>
                             </button>
+                            <div className="text-center">
+                                <i className="fas fa-volume-up fa-3x " />
+                            </div>
                         </div>
                         <div className="modal-body">
-                            <i className="fas fa-volume-up fa-3x " />
                             <div className="content">
                                 <h3> للتشغيل الصوتي باللغه العربيه اضغط 1</h3>
                                 <h3 className="en mb-4">For English press 2</h3>

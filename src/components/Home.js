@@ -32,9 +32,15 @@ class Home extends Component {
         else return null;
     }
     componentDidMount = () => {
+<<<<<<< HEAD
         this.props.dispatch(startGetAllBooks()).then(()=>{
             this.setState({loaded:true})
         })
+=======
+        this.props.dispatch(startGetAllBooks());
+        /* open language modal */
+        $("button[data-target='#homeModal']").trigger("click");
+>>>>>>> 8be1497825ef54a3dab544049a0ecbb870a4d53c
     }
     render() {
         return (
