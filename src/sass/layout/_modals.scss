@@ -1,5 +1,4 @@
 #getBookModal {
-
     .modal-content {
         min-height: 60vh;
         border-radius: 2rem !important;
@@ -52,6 +51,29 @@
 }
 
 #homeModal {
+    .modal-header {
+        border: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .modalClose:focus,
+        .modalClose:active {
+            outline: none;
+            border: none;
+            box-shadow: none;
+        }
+
+        p {
+
+            font-size: 40px;
+        }
+
+        i {
+            text-align: center;
+        }
+    }
+
     .modal-dialog {
         min-width: 40%;
     }
@@ -79,17 +101,12 @@
             text-align: left;
         }
 
-        .fa-volume-up {
-            align-self: flex-start;
-        }
+
 
         p {
             color: $darkGrey;
         }
     }
 
-    .modalClose:focus {
-        outline: none;
-        font-size: 16px;
-    }
+
 }

@@ -33,6 +33,8 @@ class Home extends Component {
     }
     componentDidMount = () => {
         this.props.dispatch(startGetAllBooks());
+        /* open language modal */
+        $("button[data-target='#homeModal']").trigger("click");
     }
     render() {
         return (
