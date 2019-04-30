@@ -75,7 +75,7 @@
     width: 100%;
     transition: box-shadow 0.4s ease;
     cursor: pointer;
-    border: 1px solid $midGrey;
+    border: 1px solid darken($midGrey, 10%);
 
 
     &.clicked {
@@ -83,7 +83,7 @@
     }
 
     &:hover {
-        box-shadow: 0 0.5rem 1rem rgba(#000, 0.3);
+        box-shadow: 0 0 0.8rem rgba(grey, 0.3);
         transition: box-shadow 0.4s ease;
     }
 
@@ -111,7 +111,9 @@
 
     &__author-name {
         align-self: flex-start;
-        font-size: 1.2rem;
+        color: darken($darkGrey, 5%) !important;
+        font-size: 1.5rem;
+        font-weight: 700;
     }
 
     &__describtion {
@@ -147,7 +149,7 @@
     background: $white;
     justify-content: center;
     align-items: center;
-    min-width: 20rem;
+    min-width: 15rem;
     max-width: 30rem;
     border-radius: 1rem;
     box-shadow: 0 0 2px $darkGrey;

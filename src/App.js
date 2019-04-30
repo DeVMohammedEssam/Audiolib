@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import $ from "jquery";
 import AppRouter from "./routes/AppRouter";
+
 import { BrowserRouter as Router } from "react-router-dom";
 
 
 class App extends Component {
-  componentDidMount() {
 
-
-  }
 
 
 
