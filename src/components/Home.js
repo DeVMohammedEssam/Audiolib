@@ -37,7 +37,9 @@ class Home extends Component {
         })
  
         /* open language modal */
-        $("button[data-target='#homeModal']").trigger("click");
+        //$("button[data-target='#homeModal']").trigger("click");
+        $('#homeModal').modal('show')
+
     }
     render() {
         return (
@@ -61,7 +63,7 @@ class Home extends Component {
                                 <div className="col-12">
                                     <div className="home__google-input-container">
                                         <input onChange={this.onChangeWord} type="text" className="home__google-input custom-input" placeholder="ابحث عن..." />
-                                        <button data-target="#homeModal" data-toggle="modal" type="button" className="custom-btn"><i className="fas fa-microphone"></i></button>
+                                        <button data-target="#homesModal" data-toggle="modal" type="button" className="custom-btn"><i className="fas fa-microphone"></i></button>
                                     </div>
                                 </div>
                             </div>

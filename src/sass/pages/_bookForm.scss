@@ -4,7 +4,10 @@
   margin-bottom: 10px;
   padding: 10px;
 }
-
+.book-form{
+  height:500px;
+  min-height:500px;
+}
 .book-form__aside__up {
   @extend %shared-style;
   text-align: center;
