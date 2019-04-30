@@ -9,6 +9,7 @@ import Dictophone from "./Dictophone"
 import $ from "jquery";
 
 import Footer from './layout/Footer';
+import HomeModal from './layout/HomeModal';
 class Home extends Component {
 
     constructor(props) {
@@ -50,10 +51,12 @@ class Home extends Component {
                                 <div className="col-12">
                                     <div className="home__google-input-container">
                                         <input type="text" className="home__google-input custom-input" placeholder="ابحث عن..." />
-                                        <button type="button" className="custom-btn"><i className="fas fa-microphone"></i></button>
+                                        <button type="button" className="custom-btn" data-toggle="modal" data-target="#homeModal"><i className="fas fa-microphone"></i></button>
+
                                     </div>
                                 </div>
                             </div>
+                            <HomeModal />
                             {booksFilter(this.state.books.length) === 0 ? (
                                 <h3 className="text-center mt-5">لا يوجد كتب</h3>
                             ) : (
@@ -87,7 +90,7 @@ class Home extends Component {
 
                     ) : (
                             <div className="loader">
-                                <img src="/loadingGif.gif" alt=""/>
+                                <img src="/loadingGif.gif" alt="" />
                             </div>
 
                         )}
