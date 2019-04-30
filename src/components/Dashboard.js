@@ -4,6 +4,7 @@ import Books from "./Books"
 import BookForm from "./AddBookForm"
 import DashNavbar from "./layout/DashNavbar"
 import Analysis from './Analysis';
+import Requests from "./Requests"
 export default class Dashboard extends Component {
   render() {
     return (
@@ -11,7 +12,7 @@ export default class Dashboard extends Component {
         <DashNavbar />
         <div className="container">
           <Switch>
-            <Route path="/dashboard/requests" component={() => (<div>requests</div>)} />
+            <Route path="/dashboard/requests" component={(Requests)} />
             <Route exact path="/dashboard/books" component={Books} />
             <Route path="/dashboard/analysis" component={Analysis} />
             <Route path="/dashboard/books/new" component={BookForm} />

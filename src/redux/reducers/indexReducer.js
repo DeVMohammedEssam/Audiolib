@@ -1,7 +1,7 @@
 const indexReducer = (state = {}, action) => {
     switch (action.type) {
         case "GET_BOOK":
-            return {book:action.book,...state};
+            return {...state,book:action.book};
        
         default: return state;
     }
