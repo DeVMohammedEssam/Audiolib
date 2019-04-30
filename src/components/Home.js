@@ -27,12 +27,14 @@ class Home extends Component {
     static getDerivedStateFromProps(nextProps, prevState) {
         console.log(nextProps)
         if (nextProps.books !== prevState.books) {
-            return { books: nextProps.books, loaded: true };
+            return { books: nextProps.books}
         }
         else return null;
     }
     componentDidMount = () => {
-        this.props.dispatch(startGetAllBooks());
+        this.props.dispatch(startGetAllBooks()).then(()=>{
+            this.setState({loaded:true})
+        })
     }
     render() {
         return (
@@ -48,9 +50,10 @@ class Home extends Component {
                             <p className="home__cover__note">ملاحظه: يمكنك البحث بالصوت او الكتابه ويفضل البحث بالانجليزيه اذا كنت تستخدم الصوت</p>
                         </div>
                     </section>
-                    {this.state.loaded ? (
+         
 
-                        <div className="custom-container mt-5 " style={{ minHeight: "400px" }}>
+                        <div className="custom-container mt-5 " style={{ height:"500px",minHeight: "500px" }}>
+
                             <div className="row">
                                 <div className="col-12">
                                     <div className="home__google-input-container">
@@ -60,7 +63,9 @@ class Home extends Component {
                                 </div>
                             </div>
                             <HomeModal />
-                            {booksFilter(this.state.books.length) === 0 ? (
+                                {this.state.loaded?
+                                
+                                booksFilter(this.state.books.length) === 0 ? (
                                 <h3 className="text-center mt-5">لا يوجد كتب</h3>
                             ) : (
                                     <React.Fragment>
@@ -87,16 +92,16 @@ class Home extends Component {
                                             {/* book cards end */}
                                         </section>
                                     </React.Fragment>
-                                )}
+                                ):
+                                   <div className="loader">
+                                
+                                <img src="/805(2).gif" />
+                                </div>
+                                }
+                            
                         </div>
 
 
-                    ) : (
-                            <div className="loader">
-                                <img src="/loadingGif.gif" alt="" />
-                            </div>
-
-                        )}
 
                 </main>
                 <Footer />
