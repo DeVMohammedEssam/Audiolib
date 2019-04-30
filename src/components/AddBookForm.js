@@ -73,7 +73,7 @@ class AddBookForm extends Component {
                                         <input className="form-control form-control-lg" id="title" placeholder="اسم الكتاب" />
                                     </div>
                                     <div className="form-group">
-                                        <input className="form-control form-control-lg" id="publisher-name" placeholder="اسم المؤلف" />
+                                        <input className="form-control form-control-lg" id="writer_name" placeholder="اسم المؤلف" />
                                     </div>
                                     <div className="form-group">
                                         <input className="form-control form-control-lg" id="publisher" placeholder="دار النشر" />

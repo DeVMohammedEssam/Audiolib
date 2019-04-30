@@ -32,7 +32,7 @@ class BookView extends Component {
         marginBottom: "150px"
       }}>
         <div className="container">
-          <GetBookModal />
+          <GetBookModal title={book.title} />
           <div className="row">
             <div className="col-md-3">
               <div className="book-form__aside">

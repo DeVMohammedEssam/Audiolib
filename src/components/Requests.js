@@ -1,27 +1,40 @@
 import React, { Component } from 'react'
 import RequestsCard from "./layout/RequestsCard"
+import axios from "axios"
+import config from "../config";
+
 export default class Requests extends Component {
+  state={
+    loaded:false,
+    messages:[]
+  }
+  componentDidMount=()=>{
+    axios.get(`${config.serverURL}/api/messages`).then((response)=>{
+        this.setState({loaded:true,messages:response.data.messages})
+    })
+  }
   render() {
     return (
-      <div>
+  
         <div className="requests">
 
+          {this.state.loaded?
           <div className="row">
-            <div className="col-12">
-              <RequestsCard email={"try@yahoo.com"} phone={"01122366997"} name={"Mohamed Salah"} message={" الورق أو الكَاغِد، هو مادة رقيقة مسطحة تنتج من لب الورق المنتج عن طريق ضغط الألياف السيليلوزية للخضروات، الألياف تكون عادة طبيعية، بحيث تتكون أساسا من السيليولوز، وتستخدم مادة تلك الصفحات في الكتابة والطباعة وتغليف جدران المنازل وأكياس المطابخ."} />
+            {this.state.messages.map((message)=>(
+              <div className="col-12">
+              <RequestsCard email={message.email} phone={message.phone} name={message.name} message={message.text} />
             </div>
-               <div className="col-12">
-              <RequestsCard email={"try@yahoo.com"} phone={"01122366997"} name={"Mohamed Salah"} message={" الورق أو الكَاغِد، هو مادة رقيقة مسطحة تنتج من لب الورق المنتج عن طريق ضغط الألياف السيليلوزية للخضروات، الألياف تكون عادة طبيعية، بحيث تتكون أساسا من السيليولوز، وتستخدم مادة تلك الصفحات في الكتابة والطباعة وتغليف جدران المنازل وأكياس المطابخ."} />
-            </div>
-          </div>
+            ))}
+            
+          </div>:<div className="loader">
+                                  <img src="/805(2).gif" />
 
-
-
+  </div> }
 
 
         </div>
 
-      </div>
+   
     )
   }
 }

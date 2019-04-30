@@ -26,7 +26,7 @@ export const startGetBook = (id) => {
 export const sendMessage=(data)=>{
   return (dispatch) => {
 
-        return axios.post("https://16764d00.ngrok.io/api/send-message/",{data}).then(response => {
+        return axios.post(`${config.serverURL}/api/send-message/`,{data}).then(response => {
 
 
 
