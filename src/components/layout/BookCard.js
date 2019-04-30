@@ -24,7 +24,7 @@ class BookCard extends Component {
         e.preventDefault();
         this.setState(() => ({ redirect: false }));
        this.props.dispatch(startDeleteBook(this.props.id)).then(()=>{
-             $("#confirmationModal").modal("hide")
+                $("button[data-dismiss='modal'").trigger("click");
             
        })
      
