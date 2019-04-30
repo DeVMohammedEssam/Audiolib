@@ -9,7 +9,8 @@ class AddBookForm extends Component {
         super(props)
         this.state = {
             voice: "",
-            image: ""
+            image: "",
+            loader:false
         }
     }
     onChangeHandler = () => {
@@ -43,10 +44,14 @@ class AddBookForm extends Component {
         let address = $("#address").val();
         let abstract = $("#abstract").val();
         let videoUrl = $("#videoUrl").val()
+           this.setState({loader:true})
         const book = { title, publisher, writer_name, year, address, voice: this.state.voice, image: this.state.image, videoUrl, abstract }
         this.props.dispatch(startUploadBook(book)).then(() => {
             console.log("Dispatch UploadForm")
+     
             this.props.history.goBack()
+        }).catch((err)=>{
+               this.setState({loader:false})
         })
 
         console.log(book, "BOOOOOOK")
@@ -55,8 +60,12 @@ class AddBookForm extends Component {
     render() {
         return (
             <div className="book-form">
-                <div className="container">
+              
+                        {!this.state.loader?
+                        <React.Fragment>
+
                     <div className="row">
+                        
                         <div className="col-12 col-md-3">
                             <div className="book-form__aside">
                                 <div className="book-form__aside__up">
@@ -73,7 +82,7 @@ class AddBookForm extends Component {
                                         <input className="form-control form-control-lg" id="title" placeholder="اسم الكتاب" />
                                     </div>
                                     <div className="form-group">
-                                        <input className="form-control form-control-lg" id="publisher-name" placeholder="اسم المؤلف" />
+                                        <input className="form-control form-control-lg" id="writer_name" placeholder="اسم المؤلف" />
                                     </div>
                                     <div className="form-group">
                                         <input className="form-control form-control-lg" id="publisher" placeholder="دار النشر" />
@@ -116,8 +125,18 @@ class AddBookForm extends Component {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                           </div>
+                          </React.Fragment>
+                        :
+                        <div className="loader">
+                                     <img src="/805(2).gif" />
+                                     <br />
+                                   <p>  Uploading... </p>
+
+                            </div>
+                        }
+                 
+           
             </div>
 
         )

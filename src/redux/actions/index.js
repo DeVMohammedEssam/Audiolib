@@ -23,4 +23,16 @@ export const startGetBook = (id) => {
 
 }
 
+export const sendMessage=(data)=>{
+  return (dispatch) => {
+
+        return axios.post(`${config.serverURL}/api/send-message/`,{data}).then(response => {
+
+
+
+        })
+    }
+
+}
+
 

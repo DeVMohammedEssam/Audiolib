@@ -1,22 +1,34 @@
 import React, { Component } from 'react';
 import { hidden } from 'ansi-colors';
+import {sendMessage} from "../../redux/actions/index"
+import {connect } from "react-redux"
 class GetBookModal extends Component {
     state = {
         email: "",
         name: "",
         phone: "",
-        message: "",
-        sentSuccessfully: false
+        text: "",
+        sentSuccessfully: false,
+        title:""
     }
     handleChange = (e) => {
         const { name, value } = e.target;
         this.setState(() => ({ [name]: value }))
     }
+    componentDidMount=()=>{
+   console.log(this.props , "PROPS")
+                this.setState({title:this.props.title})
+
+    }
 
     handleSubmit = (e) => {
         e.preventDefault();
         //axios request
+        this.props.dispatch(sendMessage({...this.state})).then(()=>{
         this.setState(() => ({ sentSuccessfully: true }))//should be in axios request callback
+
+        })
+     
     }
     render() {
         return (
@@ -26,7 +38,7 @@ class GetBookModal extends Component {
                         <div className="modal-body">
                             {this.state.sentSuccessfully ? (
                                 <div className="sent-successfully">
-                                    <div> <img src="http://placehold.it/100/100" alt="" /> </div>
+                                    <div> <i className="fa fa-right"> </i></div>
                                     <span> <img src="" alt="" /> سوف يتم التواصل معك قريبا</span>
                                 </div>
                             ) :
@@ -74,7 +86,7 @@ class GetBookModal extends Component {
                                                 value={this.state.message}
                                                 onChange={this.handleChange}
                                                 className="main-input form-control"
-                                                name="message"
+                                                name="text"
                                                 placeholder="Message..."
                                                 rows="7"
                                             >
@@ -100,4 +112,4 @@ class GetBookModal extends Component {
     }
 }
 
-export default GetBookModal;
+export default connect()(GetBookModal);

@@ -19,11 +19,11 @@ class BookCard extends Component {
     }
     deleteBook = (e) => {
         e.preventDefault();
-        this.setState(()=>({redirect:false}));
+        this.setState(() => ({ redirect: false }));
         Axios.delete(`${config.serverURL}/api/dashboard/book/${this.props.id}`).then(({ data }) => {
-           if(data.success){
-               $("button[data-dismiss='modal'").trigger("click");
-           }
+            if (data.success) {
+                $("button[data-dismiss='modal'").trigger("click");
+            }
         })
     }
     componentDidMount() {
@@ -34,7 +34,7 @@ class BookCard extends Component {
             trimmed.text(shortText);
         }
         //text truncate end
-        truncateText(".truncate")
+        truncateText("#" + this.props.id)
     }
     render() {
         const { id, url, name, desc, clickable = false, hasDelete = false } = this.props;
@@ -45,22 +45,25 @@ class BookCard extends Component {
             <div className="book-card-container" >
                 <div className={`book-card`} onClick={this.handleCardClick}>
 
-                    <div className="book-card__img-container" style={{ backgroundImage: `url(${url})` }}>
-                    </div>
-                    <div className="book-card__content ">
-                        <span className="book-card__author-name">{name}</span>
-                        <span className="book-card__describtion truncate">{desc}</span>
+                    <div className={`book-card `} onClick={this.handleCardClick}>
+
+                        <div className="book-card__img-container" style={{ backgroundImage: `url(${url})` }}>
+                        </div>
+                        <div className="book-card__content ">
+                            <span className="book-card__author-name">{name}</span>
+                            <span className="book-card__describtion" id={id}>{desc}</span>
+                        </div>
+                        {hasDelete ? (
+                            <React.Fragment>
+                                <button className="delete-bookCard btn" data-toggle="modal" data-target="#confirmationModal" onClick={(e) => { e.preventDefault() }} >
+                                    <i className="fas fa-backspace fa-2x"></i>
+                                </button>
+                                <ConfirmationModal actionHandler={this.deleteBook} />
+                            </React.Fragment>
+                        ) : ("")
+                        }
                     </div>
                 </div>
-                {hasDelete ? (
-                    <React.Fragment>
-                        <button className="delete-bookCard btn" data-toggle="modal" data-target="#confirmationModal" onClick={(e) => { e.preventDefault() }} >
-                            <i className="fas fa-backspace fa-2x"></i>
-                        </button>
-                        <ConfirmationModal actionHandler={this.deleteBook} />
-                    </React.Fragment>
-                ) : ("")
-                }
             </div>
         );
     }
