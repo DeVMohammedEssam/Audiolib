@@ -65,6 +65,31 @@
 
 }
 
+.book-card-container {
+    position: relative;
+
+    .delete-bookCard {
+        position: absolute;
+        right: -29px;
+        top: -21px;
+        z-index: 9;
+        transform: rotate(-45deg);
+        transition: color 0.4s ease;
+
+        &:focus,
+        &:active {
+            box-shadow: none;
+
+        }
+
+        &:hover {
+            color: $danger;
+            transition: color 0.4s ease;
+        }
+    }
+
+}
+
 .book-card {
     @extend %dfc-col;
     margin-bottom: $sectionsMargin;
@@ -124,6 +149,7 @@
 
 
 
+
 }
 
 .add-card {
@@ -141,15 +167,16 @@
         margin-bottom: 20px;
     }
 
+
 }
 
 .analysis__card {
     min-height: 20.3rem;
     max-height: 20.3rem;
     background: $white;
-    padding:40px;
+    padding: 40px;
     border-radius: 10px;
-  /*  display: flex;
+    /*  display: flex;
     flex-direction: column;
     background: $white;
     justify-content: center;
@@ -161,17 +188,20 @@
     padding: 4rem 1.5rem 1.5rem;
     margin-right: 3rem;
     margin-bottom: 3rem;*/
- 
-    h4{
-        color:#989898;
-    };
+
+    h4 {
+        color: #989898;
+    }
+
+    ;
+
     img {
         max-width: 10rem;
         height: auto;
     }
-  
- 
-/*
+
+
+    /*
     width:100%;
     min-height: 32.3rem;
     max-height: 32.3rem;
@@ -183,20 +213,21 @@
 
     i {
         font-size: 40px;
-    
+
         margin-bottom: 20px;
     }
-    
+
 
     .number {}
 }
 
-.requests__card{
-        background-color: white;
-        padding: 10px;
-        margin-bottom: 15px;
-        border-radius: 11px;
-    .requests__card__header{
+.requests__card {
+    background-color: white;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 11px;
+
+    .requests__card__header {
         text-align: left;
         font-weight: 500;
         color: #929292;

@@ -10,7 +10,7 @@ class Books extends Component {
     super(props)
     this.state = {
       books: [],
-      loaded:false
+      loaded: false
 
     }
   }
@@ -22,38 +22,43 @@ class Books extends Component {
     else return null;
   }
   componentDidMount = () => {
-    this.props.dispatch(startGetAllBooks()).then(()=>{
-      this.setState({loaded:true})
+    this.props.dispatch(startGetAllBooks()).then(() => {
+      this.setState({ loaded: true })
     })
   }
   render() {
     return (
-<div className="books">
-{this.state.loaded?
-      <div className="row">
-     
-        <div className="col-3">
-          <Link to="/dashboard/books/new">
-            <AddCard title="اضافه كتاب " icon="fa fa-plus" />
-          </Link>
-        </div>
-        {booksFilter(this.state.books).map((book) => (
-          <div className="col-3">
-            <Link to={"/book/" + book._id}>
+      <div className="books">
+        {this.state.loaded ?
+          <div className="row">
 
+            <div className="col-3">
+              <Link to="/dashboard/books/new">
+                <AddCard title="اضافه كتاب " icon="fa fa-plus" />
+              </Link>
+            </div>
+            {booksFilter(this.state.books).map((book) => (
+              <div className="col-3">
+                <Link to={"/book/" + book._id}>
+                  <BookCard 
+                  clickable = {true}
+                  hasDelete={true}
+                  url={book.image}
+                  name={book.title} 
+                  desc={book.abstract}
+                  id={book._id}
+                      />
+                </Link>
+              </div>
+            ))}
+          </div> :
+          <div className="loader">
 
-              <BookCard url={book.image} name={book.title} desc={book.abstract} />
-            </Link>
+            <img src="/805(2).gif" />
           </div>
-        ))}
-      </div>:
-      <div className="loader">
-                                
-                                <img src="/805(2).gif" />
-                                </div>
-      
-      }
-</div>
+
+        }
+      </div>
     )
   }
 }
