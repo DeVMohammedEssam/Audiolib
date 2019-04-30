@@ -190,3 +190,15 @@
 
     .number {}
 }
+
+.requests__card{
+        background-color: white;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 11px;
+    .requests__card__header{
+        text-align: left;
+        font-weight: 500;
+        color: #929292;
+    }
+}
