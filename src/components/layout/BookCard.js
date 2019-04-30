@@ -24,7 +24,7 @@ class BookCard extends Component {
 
         }
         //text truncate end
-        truncateText(".truncate")
+        truncateText("#"+this.props.id)
     }
     render() {
         const { id, url, name, desc, clickable = false } = this.props;
@@ -39,7 +39,7 @@ class BookCard extends Component {
                 </div>
                 <div className="book-card__content ">
                     <span className="book-card__author-name">{name}</span>
-                    <span className="book-card__describtion truncate">{desc}</span>
+                    <span className="book-card__describtion" id={id}>{desc}</span>
                 </div>
             </div>
 

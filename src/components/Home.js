@@ -32,15 +32,12 @@ class Home extends Component {
         else return null;
     }
     componentDidMount = () => {
-<<<<<<< HEAD
         this.props.dispatch(startGetAllBooks()).then(()=>{
             this.setState({loaded:true})
         })
-=======
-        this.props.dispatch(startGetAllBooks());
+ 
         /* open language modal */
         $("button[data-target='#homeModal']").trigger("click");
->>>>>>> 8be1497825ef54a3dab544049a0ecbb870a4d53c
     }
     render() {
         return (
@@ -80,10 +77,10 @@ class Home extends Component {
                                         <section className="home__cards-container">
                                             <div className="row">
                                                 {booksFilter(this.state.books, this.state.word).map((book) => {
-                                                    console.log(book);
+                                               
                                                     return (
-                                                        <div className="col-12 col-sm-6 col-md-6 col-xl-3">
-                                                            <BookCard
+                                                        <div key={book._id} className="col-12 col-sm-6 col-md-6 col-xl-3">
+                                                            <BookCard 
                                                                 clickable={true}
                                                                 id={book._id}
                                                                 url={book.image}
