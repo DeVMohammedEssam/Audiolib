@@ -33,7 +33,8 @@ export const login = () => {
                 window.location.href = "/"
 
             } else {
-                if (!window.location.href.includes("dashboard") && window.location.href != "/" && !window.location.href.includes("book")) {
+                console.log("WINDOW HREF" ,window.location.href)
+                if (!window.location.href.includes("dashboard") && window.location.pathname != "/" && !window.location.href.includes("book")) {
 
                     window.location.href = "/dashboard/analysis"
                 }
