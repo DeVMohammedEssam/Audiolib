@@ -24,7 +24,10 @@ class BookView extends Component {
     //for play Voice recored
     
         $(window).keydown((e) => {
-
+          if(e.key=="99"){
+            console.log("FFFF")
+document.getElementById('voice').play();
+          }
           if(e.keyCode=="27"){
             this.props.history.goBack();
           }
@@ -108,7 +111,7 @@ class BookView extends Component {
 
                 <div className="book-form__content__panel" >
 
-                  <audio src={book.voiceUrl} controls />
+                  <audio id="voice" src={book.voiceUrl} controls />
 
                 </div>
                 <div className="book-form__content__video">
