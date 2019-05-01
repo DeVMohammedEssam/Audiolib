@@ -19,7 +19,8 @@ class Home extends Component {
         this.state = {
             books: [],
             loaded: false,
-            word: ""
+            word: "",
+            transcript:""
         }
     }
     onChangeWord = (e) => {
@@ -28,6 +29,8 @@ class Home extends Component {
     
 
     componentDidMount = () => {
+this.props.recognition.lang = 'ar-EG'
+
 
         this.props.dispatch(startGetAllBooks()).then(() => {
             this.setState({ loaded: true })
@@ -40,7 +43,11 @@ class Home extends Component {
         } else {
             $(window).keydown(function (e) {
                 if (e.keyCode == 99) {//pressed 3 (focus search input)
-
+                    this.startVoice();
+                }
+                else if(e.keyCode==100){
+                    this.setState({word:this.state.transcript})
+                    this.stopListening();
                 }
             })
         }
@@ -74,15 +81,15 @@ class Home extends Component {
       
 
     }
+ 
     onChangeWord=(e)=>{
-
-        this.setState({word:e.target.value,transcript:e.target.value})
+ console.log(e.target.value)
+        const {value,name}=e.target;
+        this.props.resetTranscript();
+        this.setState({word:value})
     }
     
-    handleKeyDown = (e) => {
-
-    }
-
+   
   
     render() {
 
@@ -109,7 +116,7 @@ class Home extends Component {
                         <div className="row">
                             <div className="col-12">
                                 <div className="home__google-input-container">
-                                    <input value={this.state.word} onChange={this.onChangeWord} type="text" className="home__google-input custom-input" placeholder="ابحث عن..." />
+                                    <input value={this.state.word}  onFocus={this.onFocus} onChange={this.onChangeWord} type="text" className="home__google-input custom-input" placeholder="ابحث عن..." />
                                     <button onBlur={this.stopVoice}  onFocus={this.startVoice} data-target="#homesModal" data-toggle="modal" type="button" className="custom-btn"><i className="fas fa-microphone"></i></button>
                                 </div>
                             </div>
