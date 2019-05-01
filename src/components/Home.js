@@ -113,7 +113,7 @@ class Home extends Component {
                             <div className="col-12">
                                 <div className="home__google-input-container">
                                     <input value={this.state.word} onChange={this.onChangeWord} type="text" className="home__google-input custom-input" placeholder="ابحث عن..." />
-                                    <button data-target="#homesModal" data-toggle="modal" type="button" className="custom-btn"><i className="fas fa-microphone"></i></button>
+                                    <button onBlur={this.stopVoice}  onFocus={this.startVoice} data-target="#homesModal" data-toggle="modal" type="button" className="custom-btn"><i className="fas fa-microphone"></i></button>
                                 </div>
                             </div>
                         </div>
