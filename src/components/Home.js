@@ -6,6 +6,7 @@ import { startGetAllBooks } from "../redux/actions/dashboard"
 import { booksFilter } from "../filterations/book"
 import Dictophone from "./Dictophone"
 import $ from "jquery";
+import SpeechRecognition from 'react-speech-recognition'
 
 import Footer from './layout/Footer';
 import HomeModal from './layout/HomeModal';
@@ -19,22 +20,52 @@ class Home extends Component {
             books: [],
             loaded: false,
             word: "",
-            listening:false
+            listening:false,
+            clicked:false
         }
     
     }
     componentDidMount = () => {
+        
         this.props.dispatch(startGetAllBooks()).then(()=>{
             this.setState({loaded:true})
         })
+        console.log(this.props , "HOME")
  
         /* open language modal */
         //$("button[data-target='#homeModal']").trigger("click");
         $('#homeModal').modal('show')
 
     }
-    render() {
+     static getDerivedStateFromProps(nextProps, prevState) {
    
+    if (nextProps.transcript !== prevState.transcript) {
+      return { transcript: nextProps.transcript,word:nextProps.transcript };
+    }
+    else return null;
+  }
+    startVoice=()=>{
+    console.log("SSS")
+
+
+  this.props.startListening()
+      
+
+
+    }
+       stopVoice=()=>{
+    console.log("stop")
+  this.props.stopListening()
+      
+      
+
+    }
+    onChangeWord=(e)=>{
+
+        this.setState({word:e.target.value,transcript:e.target.value})
+    }
+    render() {
+
         return (
             <React.Fragment>
                 <main className="home">
@@ -56,7 +87,7 @@ class Home extends Component {
                                 <div className="col-12">
                                     <div className="home__google-input-container">
                                         <input value={this.state.word} onChange={this.onChangeWord} type="text" className="home__google-input custom-input" placeholder="ابحث عن..." />
-                                        <button data-target="#homesModal" data-toggle="modal" type="button" className="custom-btn"><i className="fas fa-microphone"></i></button>
+                                        <button onBlur={this.stopVoice} onFocus={this.startVoice} data-target="#homesModal" data-toggle="modal" type="button" className="custom-btn"><i className="fas fa-microphone"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -111,4 +142,8 @@ class Home extends Component {
 const mapStateToProps = (state) => ({
     books: state.dashboard.books
 })
-export default connect(mapStateToProps)(Home)
+const options = {
+  autoStart:false
+}
+
+export default connect(mapStateToProps)(SpeechRecognition(options)(Home))
