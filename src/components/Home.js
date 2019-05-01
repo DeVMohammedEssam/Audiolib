@@ -71,15 +71,16 @@ class Home extends Component {
             const chooseLangAudio = document.getElementById("choose-lang-audio");
             chooseLangAudio.play();
         } else {
-            const searchFocusAudio_AR = document.getElementById("search-focus-audio_AR"),
+          /*3  const searchFocusAudio_AR = document.getElementById("search-focus-audio_AR"),
                 searchFocusAudio_EN = document.getElementById("search-focus-audio_EN");
-            if (localStorage.getItem("lang") === "ar") {
+            if (localStorage.getItem("lang") == "ar") {
                 searchFocusAudio_AR.play();
             } else {
                 searchFocusAudio_EN.play();
             }
-
+*/
             $(window).keydown((e) => {
+                console.log(e.keyCode)
                 if (e.keyCode == 99) {//pressed 3 (focus search input)
                     this.startVoice();
                 }
@@ -151,7 +152,7 @@ class Home extends Component {
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
-
+        console.log(nextProps)
         if (nextProps.transcript !== prevState.transcript) {
             console.log(nextProps)
             if (nextProps.transcript.includes("امسح")) {
