@@ -57,12 +57,10 @@ this.props.recognition.lang = 'ar-EG'
         } else {
             $(window).keydown( (e)=> {
                 if (e.keyCode == 99) {//pressed 3 (focus search input)
-                    this.startVoice();
+
                 }
                 else if(e.keyCode==100){
-                    this.setState({word:this.props.transcript})
-                      console.log(booksFilter(this.state.books, this.state.word).length)
-                    this.props.stopListening();
+           
                 }
             })
         }
