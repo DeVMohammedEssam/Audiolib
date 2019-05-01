@@ -10,6 +10,12 @@ import $ from "jquery";
 
 import Footer from './layout/Footer';
 import HomeModal from './layout/HomeModal';
+
+const recognition = new SpeechRecognition()
+
+recognition.continous = true
+recognition.interimResults = true
+recognition.lang = 'en-US'
 class Home extends Component {
 
     constructor(props) {
@@ -17,20 +23,11 @@ class Home extends Component {
         this.state = {
             books: [],
             loaded: false,
-            word: ""
+            word: "",
+            listening:false
         }
     }
-    onChangeWord = (e) => {
-        this.setState({ word: e.target.value })
-    }
-
-    static getDerivedStateFromProps(nextProps, prevState) {
-        console.log(nextProps)
-        if (nextProps.books !== prevState.books) {
-            return { books: nextProps.books}
-        }
-        else return null;
-    }
+ 
     componentDidMount = () => {
         this.props.dispatch(startGetAllBooks()).then(()=>{
             this.setState({loaded:true})
@@ -42,19 +39,11 @@ class Home extends Component {
 
     }
     render() {
-
-       
-          const { transcript, resetTranscript, browserSupportsSpeechRecognition } = this.props
-       
-
-    
-    if (!browserSupportsSpeechRecognition) {
-      return null
-    }
+   
         return (
             <React.Fragment>
                 <main className="home">
- <input type="hidden" />
+
                     <section className="home__cover ">
                         <div className="home__cover__content" >
                             <div className="home__cover__logo"> <img src="./images/icons/icons8-international-music-96.png" class="home__cover__logo__image" /></div>
