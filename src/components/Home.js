@@ -42,10 +42,19 @@ class Home extends Component {
 
     }
     render() {
+
+       
+          const { transcript, resetTranscript, browserSupportsSpeechRecognition } = this.props
+       
+
+    
+    if (!browserSupportsSpeechRecognition) {
+      return null
+    }
         return (
             <React.Fragment>
                 <main className="home">
-
+ <input type="hidden" />
                     <section className="home__cover ">
                         <div className="home__cover__content" >
                             <div className="home__cover__logo"> <img src="./images/icons/icons8-international-music-96.png" class="home__cover__logo__image" /></div>
@@ -62,7 +71,7 @@ class Home extends Component {
                             <div className="row">
                                 <div className="col-12">
                                     <div className="home__google-input-container">
-                                        <input onChange={this.onChangeWord} type="text" className="home__google-input custom-input" placeholder="ابحث عن..." />
+                                        <input value={this.state.word} onChange={this.onChangeWord} type="text" className="home__google-input custom-input" placeholder="ابحث عن..." />
                                         <button data-target="#homesModal" data-toggle="modal" type="button" className="custom-btn"><i className="fas fa-microphone"></i></button>
                                     </div>
                                 </div>

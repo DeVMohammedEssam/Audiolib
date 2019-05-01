@@ -1,4 +1,9 @@
 import React from 'react';
+import {connect} from "react-redux"
+import {startDeleteBook} from "../../redux/actions/dashboard"
+
+
+
 const ConfirmationModal = props => {
     return (
         <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
@@ -17,4 +22,4 @@ const ConfirmationModal = props => {
     );
 }
 
-export default ConfirmationModal;
+export default connect()(ConfirmationModal);
