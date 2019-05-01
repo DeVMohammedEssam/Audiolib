@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function RequestCatd(props) {
   return (
-    <div className="card">
+    <div className="card mb-4">
       <h3 className="text-center card-header"> {props.title}</h3>
       <div className="card-body">
         <ul className="requests__card__header" data-lang="en">
