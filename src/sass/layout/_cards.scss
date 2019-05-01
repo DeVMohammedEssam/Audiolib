@@ -133,8 +133,9 @@
 
     &__content {
         @extend %dfc-col;
-        padding: 10%;
-        justify-content: initial
+        padding: 1.5rem;
+        flex-grow: 1;
+        justify-content: initial;
     }
 
     &__author-name {
