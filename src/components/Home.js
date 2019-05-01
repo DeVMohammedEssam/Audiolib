@@ -6,11 +6,26 @@ import { startGetAllBooks } from "../redux/actions/dashboard"
 import { booksFilter } from "../filterations/book"
 import Dictophone from "./Dictophone"
 import $ from "jquery";
-import SpeechRecognition from 'react-speech-recognition'
+import Speech from 'speak-tts' // es6
 
+import SpeechRecognition from 'react-speech-recognition'
 import Footer from './layout/Footer';
 import HomeModal from './layout/HomeModal';
-
+const speech = new Speech() // will throw an exception if not browser supported
+speech.init({
+   	'volume': 1,
+        'lang': 'ar-SA',
+        'rate': 1,
+        'pitch': 1,
+        'voice':'Google UK English Male',
+        'splitSentences': true,
+        'listeners': {
+            'onvoiceschanged': (voices) => {
+                console.log("Event voiceschanged", voices)
+            }
+        }
+})
+speech.setLanguage('ar-SA')
 
 class Home extends Component {
 
@@ -43,7 +58,11 @@ class Home extends Component {
 
     }
     componentDidMount = () => {
-        this.props.recognition.lang = 'ar-EG'
+
+       speech.speak({
+    text:'سلام عليكم',
+})
+this.props.recognition.lang = 'ar-EG'
 
 
         this.props.dispatch(startGetAllBooks()).then(() => {
@@ -60,23 +79,28 @@ class Home extends Component {
 
                     this.startVoice();
                 }
-                else if (e.keyCode == 100) {
-
-                    console.log(booksFilter(this.state.books, this.state.word).length)
-                    this.props.stopListening();
-                    this.setState({ word: this.props.transcript })
-
+                else if(e.keyCode==100){
+                 
+                      console.log(booksFilter(this.state.books, this.state.word).length)
+                        this.props.stopListening();
+                    this.setState({word:this.props.transcript})
+          
                 }
             })
         }
     }
 
-    static getDerivedStateFromProps(nextProps, prevState) {
+     static getDerivedStateFromProps(nextProps, prevState) {
+    
+    if (nextProps.transcript !== prevState.transcript) {
+      if(nextProps.transcript.includes("امسح")){
+          nextProps.resetTranscript()
+      return { transcript:"",word:"" };
 
-        if (nextProps.transcript !== prevState.transcript) {
-            return { transcript: nextProps.transcript, word: nextProps.transcript };
-        }
-        if (nextProps.books !== prevState.books) {
+      }else
+      return { transcript: nextProps.transcript,word:nextProps.transcript };
+    }
+       if (nextProps.books !== prevState.books) {
             return { books: nextProps.books }
 
         }
