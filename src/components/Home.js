@@ -61,14 +61,14 @@ this.props.recognition.lang = 'ar-EG'
                 }
                 else if(e.keyCode==100){
                     this.setState({word:this.props.transcript})
-                    this.stopVoice();
+                    this.props.stopListening();
                 }
             })
         }
     }
 
      static getDerivedStateFromProps(nextProps, prevState) {
-   
+    
     if (nextProps.transcript !== prevState.transcript) {
       return { transcript: nextProps.transcript,word:nextProps.transcript };
     }
