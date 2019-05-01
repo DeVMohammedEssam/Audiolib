@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import AnalysisCard from "./layout/AnalysisCard";
 import money from "money"
 import formatCurrency from 'format-currency'
+import config from "../config"
 import axios from "axios"
 class Analysis extends Component {
     state = {
@@ -12,7 +13,7 @@ class Analysis extends Component {
         loaded:false
     }
     componentDidMount=()=>{
-       axios.get("https://16764d00.ngrok.io/api/dashboard/analysis").then((response)=>{
+       axios.get(`${config.serverURL}/api/dashboard/analysis`).then((response)=>{
            const data=response.data;
            this.setState({views:data.users,books:data.books,loaded:true,requests:data.requests})
        })

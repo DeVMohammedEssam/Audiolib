@@ -26,7 +26,22 @@ class Home extends Component {
     onChangeWord = (e) => {
         this.setState({ word: e.target.value })
     }
+   startVoice=()=>{
+    console.log("SSS")
 
+
+  this.props.startListening()
+      
+
+
+    }
+       stopVoice=()=>{
+    console.log("stop")
+  this.props.stopListening()
+      
+      
+
+    }
     componentDidMount = () => {
 this.props.recognition.lang = 'ar-EG'
 
@@ -40,13 +55,13 @@ this.props.recognition.lang = 'ar-EG'
             const chooseLangAudio = document.getElementById("choose-lang-audio");
             chooseLangAudio.play();
         } else {
-            $(window).keydown(function (e) {
+            $(window).keydown( (e)=> {
                 if (e.keyCode == 99) {//pressed 3 (focus search input)
                     this.startVoice();
                 }
                 else if(e.keyCode==100){
-                    this.setState({word:this.state.transcript})
-                    this.stopListening();
+                    this.setState({word:this.props.transcript})
+                    this.stopVoice();
                 }
             })
         }
@@ -64,22 +79,7 @@ this.props.recognition.lang = 'ar-EG'
 
     else return null;
   }
-    startVoice=()=>{
-    console.log("SSS")
-
-
-  this.props.startListening()
-      
-
-
-    }
-       stopVoice=()=>{
-    console.log("stop")
-  this.props.stopListening()
-      
-      
-
-    }
+ 
  
     onChangeWord=(e)=>{
  console.log(e.target.value)
