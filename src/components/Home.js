@@ -4,18 +4,13 @@ import { connect } from "react-redux"
 import { Link } from "react-router-dom"
 import { startGetAllBooks } from "../redux/actions/dashboard"
 import { booksFilter } from "../filterations/book"
-import SpeechRecognition from 'react-speech-recognition'
 import Dictophone from "./Dictophone"
 import $ from "jquery";
 
 import Footer from './layout/Footer';
 import HomeModal from './layout/HomeModal';
 
-const recognition = new SpeechRecognition()
 
-recognition.continous = true
-recognition.interimResults = true
-recognition.lang = 'en-US'
 class Home extends Component {
 
     constructor(props) {
@@ -26,8 +21,8 @@ class Home extends Component {
             word: "",
             listening:false
         }
+    
     }
- 
     componentDidMount = () => {
         this.props.dispatch(startGetAllBooks()).then(()=>{
             this.setState({loaded:true})
