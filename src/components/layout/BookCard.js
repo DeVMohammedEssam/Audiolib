@@ -24,9 +24,8 @@ class BookCard extends Component {
         e.preventDefault();
         this.setState(() => ({ redirect: false }));
         $("button[data-dismiss='modal'").trigger("click");
-        this.props.dispatch(startDeleteBook(this.props.id)).then(() => {
-
-
+        this.props.dispatch(startDeleteBook(this.props.id)).then(({ data }) => {
+            this.props.history.push("/dashboard/books");
         })
 
     }

@@ -40,14 +40,14 @@ class Books extends Component {
             {booksFilter(this.state.books).map((book) => (
               <div className="col-3">
                 <Link to={"/book/" + book._id}>
-                  <BookCard 
-                  clickable = {true}
-                  hasDelete={true}
-                  url={book.image}
-                  name={book.title} 
-                  desc={book.abstract}
-                  id={book._id}
-                      />
+                  <BookCard
+                    clickable={true}
+                    hasDelete={true}
+                    url={book.image}
+                    name={book.title}
+                    desc={book.abstract}
+                    id={book._id}
+                  />
                 </Link>
               </div>
             ))}
