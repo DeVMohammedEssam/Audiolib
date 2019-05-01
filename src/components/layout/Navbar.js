@@ -23,34 +23,34 @@ class Navbar extends Component {
                 </button>
 
                 <div class="collapse navbar-collapse custom-navbar__content" id="navbarSupportedContent">
+                    <div className="container">
+                        <div className="custom-navbar__links ">
+                            <NavLink exact to="/" className="custom-navbar__button custom-btn custom-btn--white" activeClassName="custom-btn--active">الرئيسيه</NavLink>
+                            <span className="custom-navbar__vertical-line d-none d-md-block "></span>
+                            <NavLink to="/privacy" className="custom-navbar__button custom-btn custom-btn--white" activeClassName="custom-btn--active">الخصوصيه</NavLink>
+                            <span className="custom-navbar__vertical-line d-none d-md-block"></span>
+                            <NavLink to="/contact" className="custom-navbar__button custom-btn custom-btn--white" activeClassName="custom-btn--active">تواصل معنا</NavLink>
+                            <span className="custom-navbar__vertical-line d-none d-md-block"></span>
+                            <NavLink to="/use" className="custom-navbar__button custom-btn custom-btn--white" activeClassName="custom-btn--active">كيفية الاستخدام</NavLink>
+                            {
+                                this.state.isSignedIn ? (
+                                    <div className="custom-navbar__signed-container" data-lang="en">
 
-                    <div className="custom-navbar__links">
-                        <NavLink exact to="/" className="custom-navbar__button custom-btn custom-btn--white" activeClassName="custom-btn--active">الرئيسيه</NavLink>
-                        <span className="custom-navbar__vertical-line d-none d-md-block "></span>
-                        <NavLink to="/privacy" className="custom-navbar__button custom-btn custom-btn--white" activeClassName="custom-btn--active">الخصوصيه</NavLink>
-                        <span className="custom-navbar__vertical-line d-none d-md-block"></span>
-                        <NavLink to="/contact" className="custom-navbar__button custom-btn custom-btn--white" activeClassName="custom-btn--active">تواصل معنا</NavLink>
-                        <span className="custom-navbar__vertical-line d-none d-md-block"></span>
-                        <NavLink to="/use" className="custom-navbar__button custom-btn custom-btn--white" activeClassName="custom-btn--active">كيفية الاستخدام</NavLink>
-                        {
-                            this.state.isSignedIn ? (
-                                <div className="custom-navbar__signed-container" data-lang="en">
+                                        <span onClick={this.handleLogout} className="custom-navbar__button custom-btn custom-btn--white">الخروج</span>
+                                        <Link to="/dashboard/analysis" className="custom-navbar__button custom-btn custom-btn--white ">لوحه التحكم</Link>
 
-                                    <span onClick={this.handleLogout} className="custom-navbar__button custom-btn custom-btn--white">الخروج</span>
-                                    <Link to="/dashboard/analysis" className="custom-navbar__button custom-btn custom-btn--white ">لوحه التحكم</Link>
-
-                                </div>
-
-
-
-                            ) : (
-                                    <div className="custom-navbar__buttons">
-                                        <Link to="/login" className="custom-navbar__button custom-btn custom-btn--white">لوحه التحكم</Link>
                                     </div>
-                                )
-                        }
-                    </div>
 
+
+
+                                ) : (
+                                        <div className="custom-navbar__buttons">
+                                            <Link to="/login" className="custom-navbar__button custom-btn custom-btn--white">لوحه التحكم</Link>
+                                        </div>
+                                    )
+                            }
+                        </div>
+                    </div>
                 </div>
 
             </nav >
