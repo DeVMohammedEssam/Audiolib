@@ -8,7 +8,7 @@ export default function RequestCatd(props) {
                   <p>Email : {props.email}</p>
                   <p>Name: {props.name}</p>
                   <p>Phone: {props.phone}</p>
-                  <p>Book title : {props.title}</p>
+                  <p className="text-center"> {props.title}</p>
                   </div>
                   <hr />
                   <div className="requests__card__body">

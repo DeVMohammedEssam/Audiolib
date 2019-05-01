@@ -29,7 +29,9 @@ class BookView extends Component {
 document.getElementById('voice').play();
           }
           if(e.keyCode=="27"){
-            this.props.history.goBack();
+                       window.location.href = "/"
+
+       //     this.props.history.push("");
           }
         })
     
@@ -111,7 +113,7 @@ document.getElementById('voice').play();
 
                 <div className="book-form__content__panel" >
 
-                  <audio id="voice" src={book.voiceUrl} controls />
+                  <audio id="voice" src={book.voiceUrl} controls autoPlay />
 
                 </div>
                 <div className="book-form__content__video">

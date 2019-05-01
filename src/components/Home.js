@@ -60,7 +60,7 @@ class Home extends Component {
     componentDidMount = () => {
 
         this.props.recognition.lang = 'ar-EG'
-
+           this.setState({word:""})
 
         this.props.dispatch(startGetAllBooks()).then(() => {
             this.setState({ loaded: true })
@@ -103,31 +103,39 @@ class Home extends Component {
                 }
 
                 else if (e.keyCode == 100) {
-                    console.log("SSSSSSTOPPP")
+         
                     this.props.stopListening()
-                    console.log("TRANS SCRIP ", booksFilter(this.state.books, this.props.transcript))
-                    if (booksFilter(this.state.books, this.props.transcript) == 1) {
+  
+                      speech.speak({
+                        text: "Found " + booksFilter(this.state.books, this.state.word).length
+                    })
+
+                    if (booksFilter(this.state.books, this.state.word).length == 1) {
                         setTimeout(() => {
 
                             booksFilter(this.state.books, this.state.word).map((book) => {
+                              this.setState({word:""})
+                                  
+                              
                                 this.props.history.push("/book/" + book._id)
                             });
 
                         }, 2000)
+
+                        
                     } else {
+                       
                         speech.speak({
                             text: "Press A or S"
                         })
                     }
-                    speech.speak({
-                        text: "Found " + booksFilter(this.state.books, this.state.word).length
-                    })
+                   
 
                     console.log("SUCCESS")
 
                     console.log(booksFilter(this.state.books, this.state.word).length)
 
-                    this.setState({ word: this.props.transcript })
+                 
 
 
                 }
@@ -138,12 +146,18 @@ class Home extends Component {
     static getDerivedStateFromProps(nextProps, prevState) {
 
         if (nextProps.transcript !== prevState.transcript) {
+               console.log(nextProps)
             if (nextProps.transcript.includes("امسح")) {
-                nextProps.resetTranscript()
+                nextProps.resetTranscript();
+                
                 return { transcript: "", word: "" };
 
             } else
+            {
+             
                 return { transcript: nextProps.transcript, word: nextProps.transcript };
+
+            }
         }
         if (nextProps.books !== prevState.books) {
             return { books: nextProps.books }
