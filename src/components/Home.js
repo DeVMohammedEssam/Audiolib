@@ -4,12 +4,13 @@ import { connect } from "react-redux"
 import { Link } from "react-router-dom"
 import { startGetAllBooks } from "../redux/actions/dashboard"
 import { booksFilter } from "../filterations/book"
-import SpeechRecognition from 'react-speech-recognition'
 import Dictophone from "./Dictophone"
 import $ from "jquery";
 
 import Footer from './layout/Footer';
 import HomeModal from './layout/HomeModal';
+
+
 class Home extends Component {
 
     constructor(props) {
@@ -17,6 +18,7 @@ class Home extends Component {
         this.state = {
             books: [],
             loaded: false,
+<<<<<<< HEAD
             word: ""
         }
     }
@@ -28,8 +30,12 @@ class Home extends Component {
         console.log(nextProps)
         if (nextProps.books !== prevState.books) {
             return { books: nextProps.books }
+=======
+            word: "",
+            listening:false
+>>>>>>> b51997256ea78fe74b57fd74cca30871ac405542
         }
-        else return null;
+
     }
     componentDidMount = () => {
         this.props.dispatch(startGetAllBooks()).then(() => {
@@ -59,9 +65,9 @@ class Home extends Component {
 
 
 
-        /*         if (!browserSupportsSpeechRecognition) {
-                    return null
-                } */
+        if (!browserSupportsSpeechRecognition) {
+            return null
+        }
         return (
             <React.Fragment>
                 <main className="home" >
