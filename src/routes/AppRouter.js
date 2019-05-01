@@ -12,6 +12,7 @@ import PageNotFound from "../components/PageNotFound";
 import Contact from "../components/Contact";
 import Privacy from "../components/Privacy";
 import "bootstrap/dist/js/bootstrap.bundle";
+import HowToUse from '../components/HowToUse';
 
 const AppRouter = () => {
     return (
@@ -22,6 +23,7 @@ const AppRouter = () => {
                 <Route path="/book/:id" component={BookView} />
                 <Route path="/contact" component={Contact} />
                 <Route path="/privacy" component={Privacy} />
+                <Route path="/use" component={HowToUse} />
                 <Route path="/login" component={Login} />
                 <Route path="/test" component={Dictophone} />
 

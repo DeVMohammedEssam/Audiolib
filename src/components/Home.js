@@ -71,9 +71,16 @@ class Home extends Component {
             const chooseLangAudio = document.getElementById("choose-lang-audio");
             chooseLangAudio.play();
         } else {
+            const searchFocusAudio_AR = document.getElementById("search-focus-audio_AR"),
+                searchFocusAudio_EN = document.getElementById("search-focus-audio_EN");
+            if (localStorage.getItem("lang") === "ar") {
+                searchFocusAudio_AR.play();
+            } else {
+                searchFocusAudio_EN.play();
+            }
+
             $(window).keydown((e) => {
                 if (e.keyCode == 99) {//pressed 3 (focus search input)
-
                     this.startVoice();
                 }
                 else if (e.keyCode == 65) {
@@ -168,7 +175,7 @@ class Home extends Component {
 
         return (
             <React.Fragment>
-                <main className="home" >
+                <main className="home">
                     <audio className="d-block" id="search-focus-audio_AR" src="/uploads/audio/search-ar.m4a" />
                     <audio className="d-block" id="search-focus-audio_EN" src="/uploads/audio/search-en.m4a" />
                     <input type="hidden" />
