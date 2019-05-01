@@ -41,7 +41,7 @@ class Books extends Component {
               <div className="col-3">
                 <Link to={"/book/" + book._id}>
                   <BookCard 
-                  clickable = {true}
+           
                   hasDelete={true}
                   url={book.image}
                   name={book.title} 
