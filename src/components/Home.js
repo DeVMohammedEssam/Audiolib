@@ -18,25 +18,14 @@ class Home extends Component {
         this.state = {
             books: [],
             loaded: false,
-<<<<<<< HEAD
             word: ""
         }
     }
     onChangeWord = (e) => {
         this.setState({ word: e.target.value })
     }
+    
 
-    static getDerivedStateFromProps(nextProps, prevState) {
-        console.log(nextProps)
-        if (nextProps.books !== prevState.books) {
-            return { books: nextProps.books }
-=======
-            word: "",
-            listening:false
->>>>>>> b51997256ea78fe74b57fd74cca30871ac405542
-        }
-
-    }
     componentDidMount = () => {
         this.props.dispatch(startGetAllBooks()).then(() => {
             this.setState({ loaded: true })
@@ -53,9 +42,6 @@ class Home extends Component {
                 }
             })
         }
-    }
-    handleKeyDown = (e) => {
-
     }
 
     render() {
