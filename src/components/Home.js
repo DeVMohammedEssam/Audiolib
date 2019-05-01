@@ -58,9 +58,14 @@ this.props.recognition.lang = 'ar-EG'
             $(window).keydown( (e)=> {
                 if (e.keyCode == 99) {//pressed 3 (focus search input)
 
+                    this.startVoice();
                 }
                 else if(e.keyCode==100){
-           
+                 
+                      console.log(booksFilter(this.state.books, this.state.word).length)
+                                this.props.stopListening();
+                    this.setState({word:this.props.transcript})
+          
                 }
             })
         }
