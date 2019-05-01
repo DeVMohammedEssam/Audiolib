@@ -20,30 +20,30 @@ class Home extends Component {
             books: [],
             loaded: false,
             word: "",
-            transcript:""
+            transcript: ""
         }
     }
     onChangeWord = (e) => {
         this.setState({ word: e.target.value })
     }
-   startVoice=()=>{
-    console.log("SSS")
+    startVoice = () => {
+        console.log("SSS")
 
 
-  this.props.startListening()
-      
+        this.props.startListening()
+
 
 
     }
-       stopVoice=()=>{
-    console.log("stop")
-  this.props.stopListening()
-      
-      
+    stopVoice = () => {
+        console.log("stop")
+        this.props.stopListening()
+
+
 
     }
     componentDidMount = () => {
-this.props.recognition.lang = 'ar-EG'
+        this.props.recognition.lang = 'ar-EG'
 
 
         this.props.dispatch(startGetAllBooks()).then(() => {
@@ -55,42 +55,42 @@ this.props.recognition.lang = 'ar-EG'
             const chooseLangAudio = document.getElementById("choose-lang-audio");
             chooseLangAudio.play();
         } else {
-            $(window).keydown( (e)=> {
+            $(window).keydown((e) => {
                 if (e.keyCode == 99) {//pressed 3 (focus search input)
                     this.startVoice();
                 }
-                else if(e.keyCode==100){
-                    this.setState({word:this.props.transcript})
-                      console.log(booksFilter(this.state.books, this.state.word).length)
+                else if (e.keyCode == 100) {
+                    this.setState({ word: this.props.transcript })
+                    console.log(booksFilter(this.state.books, this.state.word).length)
                     this.props.stopListening();
                 }
             })
         }
     }
 
-     static getDerivedStateFromProps(nextProps, prevState) {
-    
-    if (nextProps.transcript !== prevState.transcript) {
-      return { transcript: nextProps.transcript,word:nextProps.transcript };
-    }
-       if (nextProps.books !== prevState.books) {
+    static getDerivedStateFromProps(nextProps, prevState) {
+
+        if (nextProps.transcript !== prevState.transcript) {
+            return { transcript: nextProps.transcript, word: nextProps.transcript };
+        }
+        if (nextProps.books !== prevState.books) {
             return { books: nextProps.books }
 
         }
 
-    else return null;
-  }
- 
- 
-    onChangeWord=(e)=>{
- console.log(e.target.value)
-        const {value,name}=e.target;
-        this.props.resetTranscript();
-        this.setState({word:value})
+        else return null;
     }
-    
-   
-  
+
+
+    onChangeWord = (e) => {
+        console.log(e.target.value)
+        const { value, name } = e.target;
+        this.props.resetTranscript();
+        this.setState({ word: value })
+    }
+
+
+
     render() {
 
 
@@ -116,8 +116,8 @@ this.props.recognition.lang = 'ar-EG'
                         <div className="row">
                             <div className="col-12">
                                 <div className="home__google-input-container">
-                                    <input value={this.state.word}  onFocus={this.onFocus} onChange={this.onChangeWord} type="text" className="home__google-input custom-input" placeholder="ابحث عن..." />
-                                    <button onBlur={this.stopVoice}  onFocus={this.startVoice} data-target="#homesModal" data-toggle="modal" type="button" className="custom-btn"><i className="fas fa-microphone"></i></button>
+                                    <input value={this.state.word} onFocus={this.onFocus} onChange={this.onChangeWord} type="text" className="home__google-input custom-input" placeholder="ابحث عن..." />
+                                    <button onBlur={this.stopVoice} onFocus={this.startVoice} data-target="#homesModal" data-toggle="modal" type="button" className="custom-btn"><i className="fas fa-microphone"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -175,7 +175,7 @@ const mapStateToProps = (state) => ({
     books: state.dashboard.books
 })
 const options = {
-  autoStart:false
+    autoStart: false
 }
 
 export default connect(mapStateToProps)(SpeechRecognition(options)(Home))
