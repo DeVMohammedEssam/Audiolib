@@ -27,34 +27,47 @@ class Home extends Component {
     static getDerivedStateFromProps(nextProps, prevState) {
         console.log(nextProps)
         if (nextProps.books !== prevState.books) {
-            return { books: nextProps.books}
+            return { books: nextProps.books }
         }
         else return null;
     }
     componentDidMount = () => {
-        this.props.dispatch(startGetAllBooks()).then(()=>{
-            this.setState({loaded:true})
+        this.props.dispatch(startGetAllBooks()).then(() => {
+            this.setState({ loaded: true })
         })
- 
-        /* open language modal */
-        //$("button[data-target='#homeModal']").trigger("click");
-        $('#homeModal').modal('show')
+        $('#homeModal').modal('show');
+        /* voice controls */
+        if (!localStorage.getItem("lang")) {
+            const chooseLangAudio = document.getElementById("choose-lang-audio");
+            chooseLangAudio.play();
+        } else {
+            $(window).keydown(function (e) {
+                if (e.keyCode == 99) {//pressed 3 (focus search input)
+
+                }
+            })
+        }
+    }
+    handleKeyDown = (e) => {
 
     }
+
     render() {
 
-       
-          const { transcript, resetTranscript, browserSupportsSpeechRecognition } = this.props
-       
 
-    
-    if (!browserSupportsSpeechRecognition) {
-      return null
-    }
+        const { transcript, resetTranscript, browserSupportsSpeechRecognition } = this.props
+
+
+
+        /*         if (!browserSupportsSpeechRecognition) {
+                    return null
+                } */
         return (
             <React.Fragment>
-                <main className="home">
- <input type="hidden" />
+                <main className="home" >
+                    <audio className="d-block" id="search-focus-audio_AR" src="/uploads/audio/search-ar.m4a" />
+                    <audio className="d-block" id="search-focus-audio_EN" src="/uploads/audio/search-en.m4a" />
+                    <input type="hidden" />
                     <section className="home__cover ">
                         <div className="home__cover__content" >
                             <div className="home__cover__logo"> <img src="./images/icons/icons8-international-music-96.png" class="home__cover__logo__image" /></div>
@@ -64,22 +77,24 @@ class Home extends Component {
                             <p className="home__cover__note">ملاحظه: يمكنك البحث بالصوت او الكتابه ويفضل البحث بالانجليزيه اذا كنت تستخدم الصوت</p>
                         </div>
                     </section>
-         
 
-                        <div className="custom-container mt-5 " style={{ height:"500px",minHeight: "500px" }}>
 
-                            <div className="row">
-                                <div className="col-12">
-                                    <div className="home__google-input-container">
-                                        <input value={this.state.word} onChange={this.onChangeWord} type="text" className="home__google-input custom-input" placeholder="ابحث عن..." />
-                                        <button data-target="#homesModal" data-toggle="modal" type="button" className="custom-btn"><i className="fas fa-microphone"></i></button>
-                                    </div>
+                    <div className="custom-container mt-5 " style={{ height: "500px", minHeight: "500px" }}>
+
+                        <div className="row">
+                            <div className="col-12">
+                                <div className="home__google-input-container">
+                                    <input value={this.state.word} onChange={this.onChangeWord} type="text" className="home__google-input custom-input" placeholder="ابحث عن..." />
+                                    <button data-target="#homesModal" data-toggle="modal" type="button" className="custom-btn"><i className="fas fa-microphone"></i></button>
                                 </div>
                             </div>
-                            <HomeModal />
-                                {this.state.loaded?
-                                
-                                booksFilter(this.state.books.length) === 0 ? (
+                        </div>
+                        {/* only show modal if there is no choosen language */}
+                        {!localStorage.getItem("lang") && (<HomeModal />)}
+
+                        {this.state.loaded ?
+
+                            booksFilter(this.state.books.length) === 0 ? (
                                 <h3 className="text-center mt-5">لا يوجد كتب</h3>
                             ) : (
                                     <React.Fragment>
@@ -88,10 +103,10 @@ class Home extends Component {
                                         <section className="home__cards-container">
                                             <div className="row">
                                                 {booksFilter(this.state.books, this.state.word).map((book) => {
-                                               
+
                                                     return (
                                                         <div key={book._id} className="col-12 col-sm-6 col-md-6 col-xl-3">
-                                                            <BookCard 
+                                                            <BookCard
                                                                 clickable={true}
                                                                 id={book._id}
                                                                 url={book.image}
@@ -106,14 +121,14 @@ class Home extends Component {
                                             {/* book cards end */}
                                         </section>
                                     </React.Fragment>
-                                ):
-                                   <div className="loader">
-                                
+                                ) :
+                            <div className="loader">
+
                                 <img src="/805(2).gif" />
-                                </div>
-                                }
-                            
-                        </div>
+                            </div>
+                        }
+
+                    </div>
 
 
 

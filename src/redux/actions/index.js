@@ -2,6 +2,7 @@ import axios from "axios";
 import config from "../../config";
 import history from "../../routes/history"
 
+
 const getBook = (book) => ({
     type: "GET_BOOK",
     book
@@ -23,16 +24,17 @@ export const startGetBook = (id) => {
 
 }
 
-export const sendMessage=(data)=>{
-  return (dispatch) => {
-
-        return axios.post(`${config.serverURL}/api/send-message/`,{data}).then(response => {
-
-
+export const sendMessage = (data) => {
+    return (dispatch) => {
+        return axios.post(`${config.serverURL}/api/send-message/`, { data }).then(response => {
 
         })
     }
-
 }
+
+export const setLanguage = (lang) => ({
+    type: "SET_LANG",
+    lang
+})
 
 
