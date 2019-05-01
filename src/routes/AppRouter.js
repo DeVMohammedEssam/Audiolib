@@ -9,6 +9,8 @@ import Dictophone from "../components/Dictophone.js"
 import Navbar from "../components/layout/Navbar";
 import history from "./history"
 import PageNotFound from "../components/PageNotFound";
+import Contact from "../components/Contact";
+import Privacy from "../components/Privacy";
 import "bootstrap/dist/js/bootstrap.bundle";
 
 const AppRouter = () => {
@@ -18,10 +20,10 @@ const AppRouter = () => {
             <Switch>
                 <Route exact path="/" component={Home} />
                 <Route path="/book/:id" component={BookView} />
-                <Route path="/contact" component={() => (<div>contact</div>)} />
-                <Route path="/privacy" component={() => (<div>privacy</div>)} />
+                <Route path="/contact" component={Contact} />
+                <Route path="/privacy" component={Privacy} />
                 <Route path="/login" component={Login} />
-                                <Route path="/test" component={Dictophone} />
+                <Route path="/test" component={Dictophone} />
 
                 {/* dash board routes */}
                 <Route path="/dashboard" component={Dashboard} />

@@ -13,17 +13,17 @@ import Footer from './layout/Footer';
 import HomeModal from './layout/HomeModal';
 const speech = new Speech() // will throw an exception if not browser supported
 speech.init({
-   	'volume': 1,
-        'lang': 'ar-SA',
-        'rate': 1,
-        'pitch': 1,
-        'voice':'Google UK English Male',
-        'splitSentences': true,
-        'listeners': {
-            'onvoiceschanged': (voices) => {
-                console.log("Event voiceschanged", voices)
-            }
+    'volume': 1,
+    'lang': 'ar-SA',
+    'rate': 1,
+    'pitch': 1,
+    'voice': 'Google UK English Male',
+    'splitSentences': true,
+    'listeners': {
+        'onvoiceschanged': (voices) => {
+            console.log("Event voiceschanged", voices)
         }
+    }
 })
 speech.setLanguage('ar-SA')
 
@@ -59,7 +59,7 @@ class Home extends Component {
     }
     componentDidMount = () => {
 
-this.props.recognition.lang = 'ar-EG'
+        this.props.recognition.lang = 'ar-EG'
 
 
         this.props.dispatch(startGetAllBooks()).then(() => {
@@ -76,76 +76,76 @@ this.props.recognition.lang = 'ar-EG'
 
                     this.startVoice();
                 }
-                else if(e.keyCode==65){
+                else if (e.keyCode == 65) {
 
-                                setTimeout(()=>{
+                    setTimeout(() => {
 
-                                    booksFilter(this.state.books, this.state.word).map((book,index)=>{
-                                if(index==0){
-                                     this.props.history.push("/book/"+book._id)
-                                }
-                                });
+                        booksFilter(this.state.books, this.state.word).map((book, index) => {
+                            if (index == 0) {
+                                this.props.history.push("/book/" + book._id)
+                            }
+                        });
 
-                            },2000)
-                          
+                    }, 2000)
+
                 }
-                else if(e.keyCode==83){
+                else if (e.keyCode == 83) {
 
-                                setTimeout(()=>{
+                    setTimeout(() => {
 
-                                    booksFilter(this.state.books, this.state.word).map((book,index)=>{
-                                        if(index==1)
-                                 this.props.history.push("/book/"+book._id)
-                                });
+                        booksFilter(this.state.books, this.state.word).map((book, index) => {
+                            if (index == 1)
+                                this.props.history.push("/book/" + book._id)
+                        });
 
-                            },2000)
-            
+                    }, 2000)
+
                 }
-                
-                else if(e.keyCode==100){
+
+                else if (e.keyCode == 100) {
                     console.log("SSSSSSTOPPP")
-                          this.props.stopListening()
-                          console.log("TRANS SCRIP ",booksFilter(this.state.books, this.props.transcript))
-                          if(booksFilter(this.state.books, this.props.transcript)==1){
-                                setTimeout(()=>{
+                    this.props.stopListening()
+                    console.log("TRANS SCRIP ", booksFilter(this.state.books, this.props.transcript))
+                    if (booksFilter(this.state.books, this.props.transcript) == 1) {
+                        setTimeout(() => {
 
-                                    booksFilter(this.state.books, this.state.word).map((book)=>{
-                                 this.props.history.push("/book/"+book._id)
-                                });
+                            booksFilter(this.state.books, this.state.word).map((book) => {
+                                this.props.history.push("/book/" + book._id)
+                            });
 
-                            },2000)
-                          }else{
-                                speech.speak({
-                            text:"Press A or S"
+                        }, 2000)
+                    } else {
+                        speech.speak({
+                            text: "Press A or S"
                         })
-                          }
-                            speech.speak({
-                            text:"Found "+booksFilter(this.state.books, this.state.word).length
-                        })
-                          
-                           console.log("SUCCESS")
-                        
-                      console.log(booksFilter(this.state.books, this.state.word).length)
-                   
-                    this.setState({word:this.props.transcript})
-                  
-          
+                    }
+                    speech.speak({
+                        text: "Found " + booksFilter(this.state.books, this.state.word).length
+                    })
+
+                    console.log("SUCCESS")
+
+                    console.log(booksFilter(this.state.books, this.state.word).length)
+
+                    this.setState({ word: this.props.transcript })
+
+
                 }
             })
         }
     }
 
-     static getDerivedStateFromProps(nextProps, prevState) {
-    
-    if (nextProps.transcript !== prevState.transcript) {
-      if(nextProps.transcript.includes("امسح")){
-          nextProps.resetTranscript()
-      return { transcript:"",word:"" };
+    static getDerivedStateFromProps(nextProps, prevState) {
 
-      }else
-      return { transcript: nextProps.transcript,word:nextProps.transcript };
-    }
-       if (nextProps.books !== prevState.books) {
+        if (nextProps.transcript !== prevState.transcript) {
+            if (nextProps.transcript.includes("امسح")) {
+                nextProps.resetTranscript()
+                return { transcript: "", word: "" };
+
+            } else
+                return { transcript: nextProps.transcript, word: nextProps.transcript };
+        }
+        if (nextProps.books !== prevState.books) {
             return { books: nextProps.books }
 
         }
