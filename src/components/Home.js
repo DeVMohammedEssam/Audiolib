@@ -61,6 +61,7 @@ this.props.recognition.lang = 'ar-EG'
                 }
                 else if(e.keyCode==100){
                     this.setState({word:this.props.transcript})
+                      console.log(booksFilter(this.state.books, this.state.word).length)
                     this.props.stopListening();
                 }
             })
