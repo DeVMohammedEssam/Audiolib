@@ -60,7 +60,7 @@ class Home extends Component {
     componentDidMount = () => {
 
         this.props.recognition.lang = 'ar-EG'
-           this.setState({word:""})
+        this.setState({ word: "" })
 
         this.props.dispatch(startGetAllBooks()).then(() => {
             this.setState({ loaded: true })
@@ -110,10 +110,10 @@ class Home extends Component {
                 }
 
                 else if (e.keyCode == 100) {
-         
+
                     this.props.stopListening()
-  
-                      speech.speak({
+
+                    speech.speak({
                         text: "Found " + booksFilter(this.state.books, this.state.word).length
                     })
 
@@ -121,28 +121,28 @@ class Home extends Component {
                         setTimeout(() => {
 
                             booksFilter(this.state.books, this.state.word).map((book) => {
-                              this.setState({word:""})
-                                  
-                              
+                                this.setState({ word: "" })
+
+
                                 this.props.history.push("/book/" + book._id)
                             });
 
                         }, 2000)
 
-                        
+
                     } else {
-                       
+
                         speech.speak({
                             text: "Press A or S"
                         })
                     }
-                   
+
 
                     console.log("SUCCESS")
 
                     console.log(booksFilter(this.state.books, this.state.word).length)
 
-                 
+
 
 
                 }
@@ -153,15 +153,14 @@ class Home extends Component {
     static getDerivedStateFromProps(nextProps, prevState) {
 
         if (nextProps.transcript !== prevState.transcript) {
-               console.log(nextProps)
+            console.log(nextProps)
             if (nextProps.transcript.includes("امسح")) {
                 nextProps.resetTranscript();
-                
+
                 return { transcript: "", word: "" };
 
-            } else
-            {
-             
+            } else {
+
                 return { transcript: nextProps.transcript, word: nextProps.transcript };
 
             }
@@ -204,7 +203,7 @@ class Home extends Component {
                     </section>
 
 
-                    <div className="custom-container mt-5 " style={{ height: "500px", minHeight: "500px" }}>
+                    <div className="custom-container mt-5 " style={{ minHeight: "500px" }}>
 
                         <div className="row">
                             <div className="col-12">
