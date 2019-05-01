@@ -9,7 +9,6 @@ const ConfirmationModal = props => {
         <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content" style={{ minHeight: "120px", justifyContent: "space-between " }}>
-
                     <h3 class="modal-title" id="confirmationModalLabel" style={{ textAlign: "center", padding: "26px" }}>هل انت متاكد من انك تريد حذف الكتاب ؟</h3>
 
                     <div class="modal-footer float-right p-2" >

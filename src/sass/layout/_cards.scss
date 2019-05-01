@@ -68,6 +68,11 @@
 .book-card-container {
     position: relative;
 
+    &.clicked {
+        animation: cardOpen 1s ease 0s 1 normal forwards;
+    }
+
+
     .delete-bookCard {
         position: absolute;
         right: -29px;
@@ -103,9 +108,7 @@
     border: 1px solid darken($midGrey, 10%);
 
 
-    &.clicked {
-        animation: cardOpen 1s ease 0s 1 normal forwards;
-    }
+
 
     &:hover {
         box-shadow: 0 0 0.8rem rgba(grey, 0.3);

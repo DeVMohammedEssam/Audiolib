@@ -5,7 +5,7 @@ import { connect } from "react-redux"
 
 import ConfirmationModal from './ConfirmationModal';
 import config from "../../config";
-import {startDeleteBook} from "../../redux/actions/dashboard"
+import { startDeleteBook } from "../../redux/actions/dashboard"
 import Axios from "axios";
 class BookCard extends Component {
     state = {
@@ -13,7 +13,7 @@ class BookCard extends Component {
     }
     handleCardClick = (e) => {
         if (this.props.clickable) {
-            $(e.target).parent(".book-card").addClass("clicked");
+            $(e.target).parent(".book-card").parent().addClass("clicked");
             if ($(e.target).hasClass(".book-card")) $(this).addClass("clicked");
             setTimeout(() => {
                 this.setState(() => ({ redirect: true }));
@@ -23,13 +23,12 @@ class BookCard extends Component {
     deleteBook = (e) => {
         e.preventDefault();
         this.setState(() => ({ redirect: false }));
-                        $("button[data-dismiss='modal'").trigger("click");
+        $("button[data-dismiss='modal'").trigger("click");
+        this.props.dispatch(startDeleteBook(this.props.id)).then(() => {
 
-       this.props.dispatch(startDeleteBook(this.props.id)).then(()=>{
-  
-            
-       })
-     
+
+        })
+
     }
     componentDidMount() {
         const truncateText = (textSelector, maxLetters = 70) => {
@@ -48,28 +47,27 @@ class BookCard extends Component {
         }
         return (
             <div className="book-card-container" >
-                <div className={`book-card`} onClick={this.handleCardClick}>
 
-                    <div className={`book-card `} onClick={this.handleCardClick}>
+                <div className={`book-card `} onClick={this.handleCardClick}>
 
-                        <div className="book-card__img-container" style={{ backgroundImage: `url(${url})` }}>
-                        </div>
-                        <div className="book-card__content ">
-                            <span className="book-card__author-name">{name}</span>
-                            <span className="book-card__describtion" id={id}>{desc}</span>
-                        </div>
-                        {hasDelete ? (
-                            <React.Fragment>
-                                <button className="delete-bookCard btn" data-toggle="modal" data-target="#confirmationModal" onClick={(e) => { e.preventDefault() }} >
-                                    <i className="fas fa-backspace fa-2x"></i>
-                                </button>
-                                <ConfirmationModal actionHandler={this.deleteBook} />
-                            </React.Fragment>
-                        ) : ("")
-                        }
+                    <div className="book-card__img-container" style={{ backgroundImage: `url(${url})` }}>
                     </div>
+                    <div className="book-card__content ">
+                        <span className="book-card__author-name">{name}</span>
+                        <span className="book-card__describtion" id={id}>{desc}</span>
+                    </div>
+                    {hasDelete ? (
+                        <React.Fragment>
+                            <button className="delete-bookCard btn" data-toggle="modal" data-target="#confirmationModal" onClick={(e) => { e.preventDefault() }} >
+                                <i className="fas fa-backspace fa-2x"></i>
+                            </button>
+                            <ConfirmationModal actionHandler={this.deleteBook} />
+                        </React.Fragment>
+                    ) : ("")
+                    }
                 </div>
             </div>
+
         );
     }
 }
