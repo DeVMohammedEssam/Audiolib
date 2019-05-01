@@ -2,22 +2,24 @@ import React from 'react'
 
 export default function RequestCatd(props) {
   return (
-    <div>
-       <div className="requests__card">
-                <div className="requests__card__header">
-                  <p>Email : {props.email}</p>
-                  <p>Name: {props.name}</p>
-                  <p>Phone: {props.phone}</p>
-                  <p className="text-center"> {props.title}</p>
-                  </div>
-                  <hr />
-                  <div className="requests__card__body">
-                    <p className="requests__card__body__text">
-{props.message}
+    <div className="card">
+      <h3 className="text-center card-header"> {props.title}</h3>
+      <div className="card-body">
+        <ul className="requests__card__header" data-lang="en">
+          <li className="list-group-item" >
+            <span className="text-muted card-subtitle">Email</span>: {props.email}
+          </li >
+          <li className="list-group-item" ><span className="text-muted ">Name</span>: {props.name}</li >
+          <li className="list-group-item"><span className="text-muted">Phone</span>: {props.phone}</li >
 
-                      </p>
-                    </div>
-                </div>
+        </ul>
+
+      </div>
+      <div className="card-footer">
+        <p >
+          {props.message}
+        </p>
+      </div>
     </div>
   )
 }
