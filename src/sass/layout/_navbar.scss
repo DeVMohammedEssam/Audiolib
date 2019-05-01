@@ -4,10 +4,11 @@
     align-items: center;
     z-index: 9999;
     height: 50px;
-    //  min-height: 4rem;
+
     width: 100vw;
-    padding: 0 $navbarPadding;
+    padding: 0 5% !important;
     background-color: $white;
+
 
 
     &__logo-container {
@@ -43,6 +44,7 @@
         display: flex;
         align-items: center;
         flex-grow: 1;
+        position: relative;
 
         @include mediaQuery("md") {
             display: block;
@@ -57,7 +59,7 @@
 
     &__vertical-line {
         width: 0.1rem;
-        height: 80%;
+        height: 30px;
         background-color: $lightGrey;
         margin: 0 $margin-sm;
 
