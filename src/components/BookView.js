@@ -21,6 +21,15 @@ class BookView extends Component {
     else return null;
   }
   componentDidMount = () => {
+    //for play Voice recored
+    
+        $(window).keydown((e) => {
+
+          if(e.keyCode=="27"){
+            this.props.history.goBack();
+          }
+        })
+    
     this.props.dispatch(startGetBook(this.props.match.params.id))
   }
 

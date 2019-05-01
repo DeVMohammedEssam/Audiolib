@@ -59,9 +59,6 @@ class Home extends Component {
     }
     componentDidMount = () => {
 
-       speech.speak({
-    text:'سلام عليكم',
-})
 this.props.recognition.lang = 'ar-EG'
 
 
@@ -79,11 +76,59 @@ this.props.recognition.lang = 'ar-EG'
 
                     this.startVoice();
                 }
+                else if(e.keyCode==65){
+
+                                setTimeout(()=>{
+
+                                    booksFilter(this.state.books, this.state.word).map((book,index)=>{
+                                if(index==0){
+                                     this.props.history.push("/book/"+book._id)
+                                }
+                                });
+
+                            },2000)
+                          
+                }
+                else if(e.keyCode==83){
+
+                                setTimeout(()=>{
+
+                                    booksFilter(this.state.books, this.state.word).map((book,index)=>{
+                                        if(index==1)
+                                 this.props.history.push("/book/"+book._id)
+                                });
+
+                            },2000)
+            
+                }
+                
                 else if(e.keyCode==100){
-                 
+                    console.log("SSSSSSTOPPP")
+                          this.props.stopListening()
+                          console.log("TRANS SCRIP ",booksFilter(this.state.books, this.props.transcript))
+                          if(booksFilter(this.state.books, this.props.transcript)==1){
+                                setTimeout(()=>{
+
+                                    booksFilter(this.state.books, this.state.word).map((book)=>{
+                                 this.props.history.push("/book/"+book._id)
+                                });
+
+                            },2000)
+                          }else{
+                                speech.speak({
+                            text:"Press A or S"
+                        })
+                          }
+                            speech.speak({
+                            text:"Found "+booksFilter(this.state.books, this.state.word).length
+                        })
+                          
+                           console.log("SUCCESS")
+                        
                       console.log(booksFilter(this.state.books, this.state.word).length)
-                        this.props.stopListening();
+                   
                     this.setState({word:this.props.transcript})
+                  
           
                 }
             })
