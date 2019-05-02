@@ -4,29 +4,38 @@ import { connect } from "react-redux"
 import { startGetBook } from "../redux/actions/index"
 import { withRouter } from "react-router-dom"
 import GetBookModal from './layout/GetBookModal';
+import SpeechRecognition from 'react-speech-recognition'
+
 class BookView extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      book: {}
+      book: {},
+      transcript:""
     }
   }
   static getDerivedStateFromProps(nextProps, prevState) {
-    console.log(nextProps)
+
     if (nextProps.book !== prevState.book && nextProps.book != undefined) {
       return { book: nextProps.book }
 
     }
+    
     else return null;
   }
   componentDidMount = () => {
+    if(localStorage.getItem("Lang")!=""){
+      console.log("SSSSSSSSSSSSSSSSSSSS")
+    }
     //for play Voice recored
+          $("#bookDiv").focus();
     
-        $(window).keydown((e) => {
+   $('#bookDiv').bind('keydown', (e)=> {
+    //console.log(event.keyCode);
+
           if(e.key=="99"){
-            console.log("FFFF")
-document.getElementById('voice').play();
+
           }
           if(e.keyCode=="27"){
                        window.location.href = "/"
@@ -37,15 +46,15 @@ document.getElementById('voice').play();
     
     this.props.dispatch(startGetBook(this.props.match.params.id))
   }
-
-
+ 
   render() {
     let book = this.state.book
     return this.state.book ? (
-      <div className="book-form pt-5" style={{
+      <div className="book-form pt-5"  style={{
         marginBottom: "150px"
       }}>
-        <div className="container">
+        <div className="container" id="bookDiv"   tabindex="1"
+>
           <GetBookModal title={book.title} />
           <div className="row">
             <div className="col-md-3">
@@ -142,5 +151,9 @@ const mapStateToProps = (state) => ({
   books: state.dashboard.books,
   book: state.index.book
 })
+const options = {
+  autoStart:false
+}
 
+//SpeechRecognition(options)(BookView)
 export default connect(mapStateToProps)(BookView)

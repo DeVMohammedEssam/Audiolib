@@ -10,6 +10,7 @@ class HomeModal extends Component {
         const chooseLangAudio = document.getElementById("choose-lang-audio"),
             searchFocusAudio_AR = document.getElementById("search-focus-audio_AR"),
             searchFocusAudio_EN = document.getElementById("search-focus-audio_EN");
+            chooseLangAudio.play()
         const { keyCode } = e;
         if (keyCode == 97) {//pressed 1 (Arabic)
             this.props.dispatch(setLanguage("ar"));
@@ -29,8 +30,13 @@ class HomeModal extends Component {
 
     render() {
         return (
+            
+            
+
             <div className="modal fade" id="homeModal" tabindex="-1" role="dialog" aria-labelledby="homeModalTitle" aria-hidden="true"
-                onKeyDown={this.getChoosenLang}>
+                onKeyDown={this.getChoosenLang}>         
+                  <audio className="d-block" id="search-focus-audio_AR" src="/uploads/audio/search-ar.m4a" />
+                    <audio className="d-block" id="search-focus-audio_EN" src="/uploads/audio/search-en.m4a" />
                 <div className="modal-dialog modal-dialog-centered" role="document">
 
                     <div className="modal-content">

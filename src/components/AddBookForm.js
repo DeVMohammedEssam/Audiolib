@@ -10,14 +10,14 @@ class AddBookForm extends Component {
         this.state = {
             voice: "",
             image: "",
-            loader:false
+            loader:false,
+            voiceName:""
         }
     }
     onChangeHandler = () => {
         let reader = new FileReader();
         let file = $(".upload-image__file")[0].files[0]
         reader.onloadend = () => {
-            console.log(reader.result)
             this.setState({ image: reader.result })
             $(".book-form__aside__up__image").css("background-image", "url(" + reader.result + ")")
             $(".book-form__aside__up__image").css("color", "white")
@@ -29,7 +29,9 @@ class AddBookForm extends Component {
         let reader = new FileReader();
         let file = $(".upload-voice")[0].files[0]
         reader.onloadend = () => {
-            console.log(reader.result)
+                  console.log(file)
+
+            this.setState({ voiceName: file.name })
 
             this.setState({ voice: reader.result })
 
@@ -111,7 +113,7 @@ class AddBookForm extends Component {
                                 </div>
                                 <div className="book-form__content__voice">
                                     <span>
-                                        ارفع الملف الصوتى
+                                      {this.state.voiceName==""?"  ارفع الملف الصوتى":this.state.voiceName}
                         </span>
                                     <i className="fas fa-volume-up mr-4"></i>
                                     <div className="form-group file ">

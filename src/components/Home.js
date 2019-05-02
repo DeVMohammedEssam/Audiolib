@@ -6,11 +6,12 @@ import { startGetAllBooks } from "../redux/actions/dashboard"
 import { booksFilter } from "../filterations/book"
 import Dictophone from "./Dictophone"
 import $ from "jquery";
-import Speech from 'speak-tts' // es6
 
 import SpeechRecognition from 'react-speech-recognition'
 import Footer from './layout/Footer';
 import HomeModal from './layout/HomeModal';
+import Speech from 'speak-tts' // es6
+
 const speech = new Speech() // will throw an exception if not browser supported
 speech.init({
     'volume': 1,
@@ -58,7 +59,7 @@ class Home extends Component {
 
     }
     componentDidMount = () => {
-
+   console.log("HOME")
         this.props.recognition.lang = 'ar-EG'
         this.setState({ word: "" })
 
@@ -71,22 +72,30 @@ class Home extends Component {
             const chooseLangAudio = document.getElementById("choose-lang-audio");
             chooseLangAudio.play();
         } else {
-          /*3  const searchFocusAudio_AR = document.getElementById("search-focus-audio_AR"),
+            const searchFocusAudio_AR = document.getElementById("search-focus-audio_AR"),
                 searchFocusAudio_EN = document.getElementById("search-focus-audio_EN");
-            if (localStorage.getItem("lang") == "ar") {
+            if (localStorage.getItem("lang") === "ar") {
                 searchFocusAudio_AR.play();
-            } else {
+            } else {    
                 searchFocusAudio_EN.play();
             }
-*/
-            $(window).keydown((e) => {
-                console.log(e.keyCode)
+
+      $("#homeDiv").focus();
+$('#homeDiv').bind('keydown', (e)=> {
+    //console.log(event.keyCode);
+    console.log(e.keyCode)
+  
+        
+       //....your actions for the keys .....
+ 
+           // $(window).keydown((e) => {
+
                 if (e.keyCode == 99) {//pressed 3 (focus search input)
                     this.startVoice();
                 }
                 else if (e.keyCode == 65) {
 
-                    setTimeout(() => {
+              
 
                         booksFilter(this.state.books, this.state.word).map((book, index) => {
                             if (index == 0) {
@@ -94,19 +103,19 @@ class Home extends Component {
                             }
                         });
 
-                    }, 2000)
+              
 
                 }
                 else if (e.keyCode == 83) {
 
-                    setTimeout(() => {
+                 
 
                         booksFilter(this.state.books, this.state.word).map((book, index) => {
                             if (index == 1)
                                 this.props.history.push("/book/" + book._id)
                         });
 
-                    }, 2000)
+         
 
                 }
 
@@ -115,28 +124,46 @@ class Home extends Component {
                     this.props.stopListening()
 
                     speech.speak({
-                        text: "Found " + booksFilter(this.state.books, this.state.word).length
+                        text: "Found " + booksFilter(this.state.books, this.state.word).length,
+                         queue: false, // current speech will be interrupted,
+    listeners: {
+        onstart: () => {
+            console.log("Start utterance")
+        },
+        onend: () => {
+            console.log("End utterance")
+        },
+        onresume: () => {
+            console.log("Resume utterance")
+        },
+        onboundary: (event) => {
+            console.log(event.name + ' boundary reached after ' + event.elapsedTime + ' milliseconds.')
+        }
+    }
+                    }).then(()=>{
+
+            if (booksFilter(this.state.books, this.state.word).length == 1) {
+                            
+
+                                        booksFilter(this.state.books, this.state.word).map((book) => {
+                                            this.setState({ word: "" })
+
+
+                                            this.props.history.push("/book/" + book._id)
+                                        });
+
+                        
+
+
+                                } else if(booksFilter(this.state.books, this.state.word).length >1){
+
+                                    speech.speak({
+                                        text: "Press A or S"
+                                    })
+                                }
                     })
 
-                    if (booksFilter(this.state.books, this.state.word).length == 1) {
-                        setTimeout(() => {
-
-                            booksFilter(this.state.books, this.state.word).map((book) => {
-                                this.setState({ word: "" })
-
-
-                                this.props.history.push("/book/" + book._id)
-                            });
-
-                        }, 2000)
-
-
-                    } else {
-
-                        speech.speak({
-                            text: "Press A or S"
-                        })
-                    }
+                  
 
 
                     console.log("SUCCESS")
@@ -147,12 +174,14 @@ class Home extends Component {
 
 
                 }
-            })
+                   
+ });
+            //})
         }
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
-        console.log(nextProps)
+  
         if (nextProps.transcript !== prevState.transcript) {
             console.log(nextProps)
             if (nextProps.transcript.includes("امسح")) {
@@ -189,7 +218,7 @@ class Home extends Component {
 
         return (
             <React.Fragment>
-                <main className="home">
+                <main className="home" id="homeDiv"  tabindex="0">
                     <audio className="d-block" id="search-focus-audio_AR" src="/uploads/audio/search-ar.m4a" />
                     <audio className="d-block" id="search-focus-audio_EN" src="/uploads/audio/search-en.m4a" />
                     <input type="hidden" />

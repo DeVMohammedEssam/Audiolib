@@ -51,9 +51,19 @@ const HowToUse = () => {
                                 <li className="pr-3">
                                     <p>
                                         -
-                                        لايقاف البحث الصوتي تقوم بالضغط على الرقم
+                                        لايقاف البحث الصوتي واظهار نتيجه البحث تقوم بالضغط على الرقم
                                     <b className="badge  badge-primary mr-3">
                                             4
+                                    </b>
+                                    </p>
+
+                                </li>
+                                 <li className="pr-3">
+                                    <p>
+                                        -
+                                      لمسح كلمات البحث قل
+                                    <b className="badge  badge-primary mr-3">
+                                            امسح
                                     </b>
                                     </p>
                                 </li>
@@ -107,12 +117,13 @@ const HowToUse = () => {
                                 <li className="pr-3">
                                     <p>
                                         -
-                                        للرجوع للرئيسيه اضغط الزر
+                                        للرجوع للرئيسيه اضغط الزر 
                                    <b className="badge  badge-dark mr-3">
                                             Esc
                                     </b>
                                     </p>
                                 </li>
+                                
                             </ul>
                         </div>
                     </div>

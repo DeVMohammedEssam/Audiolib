@@ -40,7 +40,7 @@ class BookCard extends Component {
     render() {
         const { id, url, name, desc, clickable = false, hasDelete = false } = this.props;
         if (clickable && this.state.redirect && !hasDelete) {
-            return (<Redirect push to={`/book/${id}`} />)
+          //  return (<Redirect push to={`/book/${id}`} />)
         }
         return (
             <div className="book-card-container" >

@@ -11,6 +11,7 @@ class Analysis extends Component {
         books: 0,
         requests: 0,
         loaded: false
+   
     }
     componentDidMount = () => {
         axios.get(`${config.serverURL}/api/dashboard/analysis`).then((response) => {
@@ -25,7 +26,7 @@ class Analysis extends Component {
 
                 {this.state.loaded ? <div className="row justify-content-center">
                     <div className="col-12 col-lg-3 mb-4" >
-                        <AnalysisCard src="fa fa-eye fa-default" text="المشاهدات" number={String(formatCurrency(this.state.users).replace(".00", ""))} />
+                        <AnalysisCard src="fa fa-eye fa-default" text="المشاهدات" number={String(formatCurrency(this.state.views).replace(".00", ""))} />
                     </div>
                     <div className="col-12 col-lg-3 mb-4">
                         <AnalysisCard src="fas fa-book fa-green" text="الكتب" number={String(formatCurrency(this.state.books).replace(".00", ""))} />

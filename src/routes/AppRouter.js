@@ -20,12 +20,12 @@ const AppRouter = () => {
             <Navbar />
             <Switch>
                 <Route exact path="/" component={Home} />
-                <Route path="/book/:id" component={BookView} />
-                <Route path="/contact" component={Contact} />
-                <Route path="/privacy" component={Privacy} />
-                <Route path="/use" component={HowToUse} />
-                <Route path="/login" component={Login} />
-                <Route path="/test" component={Dictophone} />
+                <Route exact path="/book/:id" component={BookView} />
+                <Route exact path="/contact" component={Contact} />
+                <Route exact path="/privacy" component={Privacy} />
+                <Route exact path="/use" component={HowToUse} />
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/test" component={Dictophone} />
 
                 {/* dash board routes */}
                 <Route path="/dashboard" component={Dashboard} />
