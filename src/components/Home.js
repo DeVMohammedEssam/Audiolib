@@ -260,13 +260,15 @@ $('#homeDiv').bind('keydown', (e)=> {
 
                                                     return (
                                                         <div key={book._id} className="col-12 col-sm-6 col-md-6 col-xl-3">
-                                                            <BookCard
+                                                           <Link to={"/book/"+book._id}>
+                                                                <BookCard
                                                                 clickable={true}
                                                                 id={book._id}
                                                                 url={book.image}
                                                                 name={book.title}
                                                                 desc={book.abstract}
                                                             />
+                                                           </Link>
                                                         </div>
                                                     )
                                                 }
